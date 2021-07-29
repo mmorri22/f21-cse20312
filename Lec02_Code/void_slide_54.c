@@ -7,6 +7,9 @@ int main(void){
 
 	void* hello = malloc( size );
 
+	fprintf( stdout, "Working Memory: %p\n", &hello );
+	fprintf( stdout, "Long-term Memory: %p\n", hello );
+
 	// fprintf(stdout, "Hello, World\n");
 	
 	free( hello );
