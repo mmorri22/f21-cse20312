@@ -2,9 +2,8 @@
 #include <stdlib.h>
 
 int main(void){
-	
-	/* Deliberate logic error to show students importance of data types */
-	int size = -1 * 13 * sizeof(char);
+
+	int size = 13 * sizeof(char);
 
 	void* hello = malloc( size );
 
