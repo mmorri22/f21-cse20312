@@ -11,6 +11,8 @@ int main(void){
 	fprintf( stdout, "Working Memory: %p\n", &hello );
 	fprintf( stdout, "Long-term Memory: %p\n", hello );
 
+	fprintf( stdout, "Address of third char: %p\n", hello + 2*sizeof(char) );
+	fprintf( stdout, "Address of third char with context: %p\n", (char *)(hello + 2*sizeof(char)) );		
 	// fprintf(stdout, "Hello, World\n");
 	
 	free( hello );
