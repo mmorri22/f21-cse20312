@@ -9,7 +9,7 @@ int main( void ){
 
 	fprintf( stdout, "%lf %lf\n", the_double, comp_double);
 
-	/*
+	
 	if( the_double == comp_double ){
 		fprintf( stdout, "They match!\n" );
 		fprintf( stdout, "%la %la\n", the_double, comp_double );
@@ -21,8 +21,7 @@ int main( void ){
 		fprintf( stdout, "They do not match!\n" );
 		fprintf( stdout, "%la %la\n", the_double, comp_double );
 		fprintf( stdout, "%.23lf %.23lf\n", the_double, comp_double ); 
-	}
-	*/	
+	}	
 	
 	return 0;
 
