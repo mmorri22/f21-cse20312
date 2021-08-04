@@ -9,9 +9,10 @@ int main( void ){
 	long unsigned int the_lui;
 	char* the_string = (char *)malloc( 25 * sizeof(char) );
 
-	fscanf( stdin, "%d %f %ld %s", &the_int, &the_float, &the_lui, the_string );
+	/* Finish the code to put them in order */
+	fscanf( stdin, "/* Put in the input specifiers Here */", /* Put in the variables here */ );
 
-	fprintf( stdout, "%d %f %ld %s\n", the_int, the_float, the_lui, the_string );
+	fprintf( stdout, "/* Put in the input specifiers Here */", /* Put in the variables here */  );
 
 	return 0;
 

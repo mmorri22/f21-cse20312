@@ -1,8 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-void print_array( int int_array[] ){
-
-	long unsigned int array_size = sizeof( int_array );
+void print_array( int* int_array, long unsigned int array_size ){
 
 	fprintf( stdout, "Array Address in func : %p %p\n", &int_array, int_array );
 
@@ -19,14 +18,20 @@ void print_array( int int_array[] ){
 
 int main( void ){
 
-	int int_array[] = {33, 44, 27, 19};
+	long unsigned int array_size = 4;
+	int* int_array = (int *)malloc( array_size * sizeof(int) );
 
-	long unsigned int array_size = sizeof( int_array ) / sizeof(int);
+	int_array[0] = 33;
+	int_array[1] = 44;
+	int_array[2] = 27;
+	int_array[3] = 19;
 
 	fprintf( stdout, "Array Address in main : %p %p\n", &int_array, int_array );
 	fprintf( stdout, "Number of ints in main: %lu\n", array_size );	
 
-	print_array( int_array );
+	print_array( int_array, array_size );
+
+	free( int_array );
 
 	return 0;
 }
