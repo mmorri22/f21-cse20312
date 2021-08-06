@@ -39,7 +39,7 @@ int print_arrays( int array_1[], long unsigned int array_1_len,
 
 int main( void ){
 
-	/* Abstracted Static Array Allocation within the Registers */
+	/* Abstracted Static Array Allocation on the Stack */
 	/* Use {} allocation to show simple, high-level allocation */
 	int array_1[] = {12, 24, 36, 48};
 	
@@ -47,14 +47,15 @@ int main( void ){
 	long unsigned int stat_arr_len = sizeof( array_1 )/sizeof( int );
 
 	/* Strict Dynamic Memory Allocation on the Data Heap */
+	/* Must define the size since sizeof() can't be called Heap data */
 	long unsigned int dyn_arr_len = 4;
 	int* dynamic_array = (int *)malloc( dyn_arr_len * sizeof(int) );
 	
 	/* Shows students we need stricter allocation with dynamic arrays */
-	*( (char *)( (void *)dynamic_array ) ) = 9;
-	*( (char *)( (void *)dynamic_array + 1*sizeof(int) ) ) = 18;
-	*( (char *)( (void *)dynamic_array + 2*sizeof(int) ) ) = 27;
-	*( (char *)( (void *)dynamic_array + 3*sizeof(int) ) ) = 36;	
+	*( (int *)( (void *)dynamic_array ) ) = 9;
+	*( (int *)( (void *)dynamic_array + 1*sizeof(int) ) ) = 18;
+	*( (int *)( (void *)dynamic_array + 2*sizeof(int) ) ) = 27;
+	*( (int *)( (void *)dynamic_array + 3*sizeof(int) ) ) = 36;	
 
 	/* Function Call */
 	fprintf( stdout, "Total sum = %d\n", 
