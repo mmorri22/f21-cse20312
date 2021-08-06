@@ -25,6 +25,9 @@ int main( int argc, char** argv ){
 	
 	/* New code to allocate and free to combine concepts for the MIND */
 	long unsigned int array_len = 5;
+
+	fprintf( stdout, "%lu %p\n", array_len, &array_len );
+
 	char* notre = (char *)malloc( array_len * sizeof(char) );
 	notre[0] = 'N';
 	notre[1] = 'o';
