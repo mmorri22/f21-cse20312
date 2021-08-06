@@ -5,7 +5,7 @@ int main( void ){
 
 	int* int_array = (int *)malloc( 10 * sizeof(int) );
 
-	char* char_array = (char *)malloc( 15 * sizeof(int) );
+	char* char_array = (char *)malloc( 15 * sizeof(char) );
 
 	fprintf( stdout, "%lu\n", sizeof(int_array) );
 

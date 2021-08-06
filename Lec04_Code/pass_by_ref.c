@@ -2,26 +2,30 @@
 
 void foo( int* x ){
 
-	fprintf( stdout, "Working memory (register) address of x in foo            : %p\n", &x);
-	fprintf( stdout, "Value of the information inside the register x in foo    : %p\n", x );	
-	fprintf( stdout, "Working memory (register) address of de-ferenced x in foo: %p\n", &*x );	
-	fprintf( stdout, "De-referenced value of x in foo prior to addition        : %d\n", *x );
 
-	*x += 2;
+	// Step 4: Print the Working memory (register) address of x\
+	
 
-	fprintf( stdout, "De-referenced value of x in foo after the addition       : %d\n", *x );
+	// Step 5:Print the Value of the information inside the register x in foo	
+		
+	// Step 6: Print the De-referenced value of x in foo prior to addition
+
+	// Step 7: Add two to x
+
+	// Step 8: De-referenced value of x in foo after the addition
 }
 
 int main( void ){
 
 	int x = 4;
 
-	fprintf( stdout, "Old x data value in the working memory (register) in main: %d\n", x);
-	fprintf( stdout, "Working memory (register) address of x in main           : %p\n", &x);
+	// Step 1: Print the orig9nal value in the working memory (register) in main
+	
+	// Step 2: Print the Working memory (register) address of x in main 
 
-	foo( &x );
+	// Step 3: Call the function foo, passing x by reference
 
-	fprintf( stdout, "New x data value in the working memory (register) in main: %d\n", x);	
+	// Step 9: Print the final data value in the working memory (register) in main
 
 	return 0;
 
