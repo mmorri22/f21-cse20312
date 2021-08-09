@@ -2,7 +2,7 @@
 
 int main( void ){
 
-	long unsigned int the_value = 25;
+	long unsigned int the_value = 100000;
 
 	while( the_value >= 0 ){
 	
