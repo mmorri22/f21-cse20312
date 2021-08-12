@@ -3,7 +3,6 @@
 
 int main(void){
 	
-	/* Deliberate logic error to show students importance of data types */
 	long unsigned int size = 13 * sizeof(char);
 
 	void* hello = malloc( size );
