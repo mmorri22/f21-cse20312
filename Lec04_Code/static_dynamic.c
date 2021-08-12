@@ -6,7 +6,7 @@ int main(){
 	// Allocate a static array to 10, -19, 20, 34
 	
 	
-	// Allocate a dynamic array 
+	// Allocate a dynamic array with a size variable
 	
 	
 	// Set the values in the dynamic array to 10, -19, 20, 34
