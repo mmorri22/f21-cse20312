@@ -1,9 +1,11 @@
+/* Change from void_slide_6.c is at Line 9 */
+
 #include <stdio.h>
 #include <stdlib.h>
 
 int main(void){
 	
-	/* Deliberate logic error to show students importance of data types */
+	/* Fixed logic to show proper memory allocation */
 	int size = 13 * sizeof(char);
 
 	void* hello = malloc( size );

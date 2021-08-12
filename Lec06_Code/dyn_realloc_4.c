@@ -5,9 +5,6 @@ int main( void ){
 
 	long unsigned int init_len = 5;
 	int* dyn_int_array = (int *)malloc( init_len * sizeof(int) );
-	int* dyn_int_array_2 = (int *)malloc( init_len * sizeof(int) );
-	
-	fprintf( stdout, "array_1 at %p, array_2 at %p\n", dyn_int_array, dyn_int_array_2 );
 
 	char read_char = 'y';
 	long unsigned int num_read = 0;
@@ -20,24 +17,30 @@ int main( void ){
 
 		dyn_int_array[ num_read ] = read_int;
 
-		++num_read;	
+		++num_read;
 
 		long unsigned int iter;
 		for( iter = 0; iter < num_read; ++iter ){
-		
-			fprintf( stdout, "Allocated length = %lu, dyn_int_array[ %lu ] = %d,\t&dyn_int_array[ %lu ] = %p \n", 
+
+			fprintf( stdout, "Allocated length = %lu, dyn_int_array[ %lu ] = %d,\t&dyn_int_array[ %lu ] = %p \n",
 					init_len, iter, dyn_int_array[iter], iter, &dyn_int_array[iter] );
-				
+
 		}
-		
-		// Initial attempt to re-allocate 
+
+		// Initial attempt to re-allocate
+		// If the number read is equal to the length
 		if( num_read == init_len ){
+
+			// Multiply the length by two
 			init_len *= 2;
 			
+			// Point to the old memory
 			int* reference = dyn_int_array;
+
+			// Re-allocate
+			dyn_int_array = (int *)malloc( init_len * sizeof( int ) );
 			
-			dyn_int_array = (int *)malloc( init_len * sizeof( int ) ); 
-			
+			// Copy from old to new array
 			long unsigned int copy_iter;
 			for( copy_iter = 0; copy_iter < num_read; ++copy_iter ){
 				
@@ -45,19 +48,19 @@ int main( void ){
 				
 			}
 			
+			// Free memory pointed to by reference 
 			free( reference );
 		}
 
 		// Flush the input buffer
 		getchar();
 
-		fprintf( stdout, "Do you wish to continue? (y for yes): ");  
-		fscanf( stdin, "%c", &read_char ); 
+		fprintf( stdout, "Do you wish to continue? (y for yes): ");
+		fscanf( stdin, "%c", &read_char );
 	}
 
 	// Free the Dynamically Allocated Arrays
 	free( dyn_int_array );
-	free( dyn_int_array_2 );
 
 	return 0;
 
