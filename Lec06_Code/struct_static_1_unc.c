@@ -21,7 +21,7 @@ int main( void ){
 	fprintf( stdout, "%lu %lu\n", int_static_array.length, int_static_array.capacity );
 	
 	// We will see what happens when I uncomment this line
-	// free( int_static_array.the_array );
+	free( int_static_array.the_array );
 
 	return 0;
 }

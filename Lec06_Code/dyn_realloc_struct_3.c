@@ -16,7 +16,7 @@ void insert_dyn_array( dyn_array* int_dyn_array, int read_int ){
 	// Dr. Morrison's Golden Rule of Pointers 
 	if( int_dyn_array->the_array == NULL ){
 		
-		// Means the array is empty
+		// Set the array length to 1
 		int_dyn_array->length = 1;
 		int_dyn_array->capacity = 1;
 		
@@ -26,28 +26,10 @@ void insert_dyn_array( dyn_array* int_dyn_array, int read_int ){
 		
 		return;
 	}
-		
-	fprintf( stdout, "length = %lu, capacity = %lu, read_int = %d\n", 
-		int_dyn_array->length, int_dyn_array->capacity, read_int );
 	
-	int_dyn_array->the_array[ int_dyn_array->length ]  = read_int;
-
-	++(int_dyn_array->length);
-	
-
-	long unsigned int iter;
-	for( iter = 0; iter < int_dyn_array->length; ++iter ){
-
-		fprintf( stdout, "Allocated length = %lu, int_dyn_array[ %lu ] = %d,\t&int_dyn_array[ %lu ] = %p \n",
-				int_dyn_array->capacity, iter, int_dyn_array->the_array[iter], 
-				iter, &(int_dyn_array->the_array[iter]) );
-
-	}
-
-	// Initial attempt to re-allocate
-	// If the number read is equal to the capacity
+	// If it gets here, there is at least one element
 	if( int_dyn_array->length == int_dyn_array->capacity ){
-
+		
 		// Multiply the capacity by two
 		int_dyn_array->capacity *= 2;
 		
@@ -66,10 +48,30 @@ void insert_dyn_array( dyn_array* int_dyn_array, int read_int ){
 		}
 		
 		// Free memory pointed to by reference 
-		free( reference );
-	}		
+		free( reference );		
 		
+	}
+	
+	// Insert the element in the next available location
+	int_dyn_array->the_array[ int_dyn_array->length ] = read_int;
+	
+	// Increment the length of the array 
+	++(int_dyn_array->length);
 		
+}
+
+void print_array( dyn_array* int_dyn_array ){
+	
+	long unsigned int iter;
+	for( iter = 0; iter < int_dyn_array->length; ++iter ){
+
+		fprintf( stdout, "Allocated length = %lu, int_dyn_array[ %lu ] = %d,\t&int_dyn_array[ %lu ] = %p \n",
+				int_dyn_array->capacity, iter, 
+				int_dyn_array->the_array[iter], iter, 
+				&(int_dyn_array->the_array[iter]) );
+
+	}
+	
 }
 
 int main( void ){
@@ -81,17 +83,22 @@ int main( void ){
 	/* De-reference for memory on the Data Heap */
 	int_dyn_array->length = 0;
 	int_dyn_array->capacity = init_len;
-	int_dyn_array->the_array = (int *)malloc( init_len * sizeof( int ) );
+	int_dyn_array->the_array = NULL;
 
+	/* Note: This code will segfault with more than two entries */
 	char read_char = 'y';
 	while( read_char == 'y' ){
 
+		/* Read in exactly one integer */
 		int read_int;
 		fprintf( stdout, "Enter an integer: ");
 		fscanf( stdin, "%d", &read_int );
 
 		// Pass By Reference Function 
 		insert_dyn_array( int_dyn_array, read_int );
+		
+		// Print the array structure and data
+		print_array( int_dyn_array );
 
 		// Flush the input buffer
 		getchar();
@@ -99,9 +106,13 @@ int main( void ){
 		fprintf( stdout, "Do you wish to continue? (y for yes): ");
 		fscanf( stdin, "%c", &read_char );
 	}
+	
 
-	// Free the Dynamically Allocated Arrays
+	// Free the array 
 	free( int_dyn_array->the_array );
+	
+	// Free the dynamically allocated struct 
+	free( int_dyn_array );
 
 	return 0;
 

@@ -24,6 +24,9 @@ int main( void ){
 
 	// Free the array 
 	free( int_dyn_array->the_array );
+	
+	// Free the dynamically allocated struct 
+	free( int_dyn_array );
 
 	return 0;
 }
