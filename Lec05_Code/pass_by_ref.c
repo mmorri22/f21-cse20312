@@ -12,7 +12,7 @@ void foo( int* x ){
 
 	// Step 7: Add two to x
 
-	// Step 8: De-referenced value of x in foo after the addition
+	// Step 8: Print the De-referenced value of x in foo after the addition
 }
 
 int main( void ){

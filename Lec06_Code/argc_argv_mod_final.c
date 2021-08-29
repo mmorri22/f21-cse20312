@@ -21,13 +21,7 @@ int main( int argc, char* argv[] ){
 
 	print_inputs( argc, argv );
 
-	argc -= 1;
-	print_inputs( argc, argv );
-	
-	// argc += 40 will NOT segfault. Information to the screen
-	argc += 40;
-
-	// But uncommenting 41 will segfault because the NULL after the information
+	// Adding 41 will segfault because we reached the end of the Stack
 	argc += 41;
 
 	print_inputs( argc, argv );

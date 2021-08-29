@@ -21,11 +21,7 @@ int main( int argc, char* argv[] ){
 
 	print_inputs( argc, argv );
 
-	argc -= 1;
-	print_inputs( argc, argv );
-	
-	// argc += 40 will NOT segfault. Information to the screen
-	argc += 40;
+	argc += 4;
 	print_inputs( argc, argv );
 
 	return 0;
