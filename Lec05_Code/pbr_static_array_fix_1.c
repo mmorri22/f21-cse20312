@@ -5,7 +5,7 @@ void print_array( int int_array[] ){
 	/* A fix new programmers will try and get flummoxed */
 	long unsigned int array_size = sizeof( *int_array );
 
-	fprintf( stdout, "Array Address in func : %p %p\n", &int_array, int_array );
+	fprintf( stdout, "Array Address in func : %p\n", &int_array, int_array );
 
 	fprintf( stdout, "Number of ints in func: %lu\n", array_size );
 
@@ -24,7 +24,7 @@ int main( void ){
 
 	long unsigned int array_size = sizeof( int_array ) / sizeof(int);
 
-	fprintf( stdout, "Array Address in main : %p %p\n", &int_array, int_array );
+	fprintf( stdout, "Array Address in main : %p\n", int_array );
 	fprintf( stdout, "Number of ints in main: %lu\n", array_size );	
 
 	print_array( int_array );

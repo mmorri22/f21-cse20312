@@ -3,7 +3,7 @@
 void foo( int* x ){
 
 
-	// Step 4: Print the Working memory (register) address of x\
+	// Step 4: Print the Working memory (register) address of x
 	
 
 	// Step 5:Print the Value of the information inside the register x in foo	
