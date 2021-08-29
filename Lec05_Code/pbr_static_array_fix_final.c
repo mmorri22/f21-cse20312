@@ -1,8 +1,9 @@
 #include <stdio.h>
 
-void print_array( int int_array[] ){
+void print_array( int int_array[], long unsigned int array_size ){
 
-	long unsigned int array_size = sizeof( int_array );
+	/* Fix is here, COmment out this sizeof */
+	// long unsigned int array_size = sizeof( *int_array );
 
 	fprintf( stdout, "Array Address in func : %p %p\n", &int_array, int_array );
 
@@ -21,12 +22,12 @@ int main( void ){
 
 	int int_array[] = {33, 44, 27, 19, -3};
 
-	long unsigned int array_size = sizeof( int_array );
+	long unsigned int array_size = sizeof( int_array ) / sizeof(int);
 
-	fprintf( stdout, "Array Address in main : %p %p\n", int_array int_array );
+	fprintf( stdout, "Array Address in main : %p %p\n", &int_array, int_array );
 	fprintf( stdout, "Number of ints in main: %lu\n", array_size );	
 
-	print_array( int_array );
+	print_array( int_array, array_size );
 
 	return 0;
 }

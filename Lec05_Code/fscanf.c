@@ -12,7 +12,7 @@ int main( void ){
 	/* Finish the code to put them in order */
 	fscanf( stdin, "/* Put in the input specifiers Here */", /* Put in the variables here */ );
 
-	fprintf( stdout, "/* Put in the input specifiers Here */", /* Put in the variables here */  );
+	fprintf( stdout, "/* Put in the output specifiers Here */", /* Put in the variables here */  );
 
 	return 0;
 
