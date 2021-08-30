@@ -5,3 +5,4 @@ wget https://raw.githubusercontent.com/mmorri22/f21-cse20312/main/PC01/puzzle1.t
 wget https://raw.githubusercontent.com/mmorri22/f21-cse20312/main/PC01/puzzle2.txt
 wget https://raw.githubusercontent.com/mmorri22/f21-cse20312/main/PC01/puzzle3.txt
 wget https://raw.githubusercontent.com/mmorri22/f21-cse20312/main/PC01/Makefile
+rm setup.sh
