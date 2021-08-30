@@ -10,6 +10,9 @@
 #ifndef SUDOKU_H
 #define SUDOKU_H
 
+#include <stdio.h>
+#include <stdlib.h>
+
 #define ROWS 9
 #define COLS 9
 
