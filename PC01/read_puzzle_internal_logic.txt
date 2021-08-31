@@ -1,0 +1,19 @@
+long unsigned int row_input = 0;
+long unsigned int col_input = 0;
+
+while( input_file != NULL ){
+ 
+	/* Read in an integer from the input file */
+
+	/* Place the int at the appropriate row and column */
+
+	/* If col_input is less than COLS - 1, increment col_input */
+
+ 	/* Otherwise, increment row_input and set col_input = 0 */
+
+	/* Break the while loop if we've reached the end of the file */
+	if(input_file->_IO_read_ptr == input_file->_IO_read_end)
+		break;   
+
+}
+
