@@ -29,7 +29,7 @@ int main( void ){
 		fprintf( stdout, "Local Register, Long-Term Mem, Mem Usage: %p %p %ld %d\n", 
 			&hello, hello, r_usage.ru_maxrss, increment);
 
-		free( hello );
+		//free( hello );
 
 	}
 	return 0;

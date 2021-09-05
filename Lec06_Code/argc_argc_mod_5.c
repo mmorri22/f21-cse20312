@@ -21,8 +21,8 @@ int main( int argc, char* argv[] ){
 
 	print_inputs( argc, argv );
 
-	// Adding 42 will segfault because we reached the end of the Stack
-	argc += 42;
+	// Adding 41 will segfault because we reached the end of the Stack
+	argc += 41;
 
 	print_inputs( argc, argv );
 
