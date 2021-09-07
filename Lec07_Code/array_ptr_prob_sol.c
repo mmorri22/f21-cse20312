@@ -5,25 +5,25 @@
 #define NUMCHARS 9
 
 void malloc_arr( char** str_array ){
+	
 	long unsigned int iter;
 	for( iter = 0; iter < NUMSTRS; ++iter ){
+		
 		str_array[ iter ] = (char *)malloc( NUMCHARS * sizeof( char ) );
+		
 	}
 }
 
 void free_arr( char** str_array ){
+	
 	long unsigned int iter;
 	for( iter = 0; str_array[iter] != NULL; ++iter ){
 		
-		/* Step X: Since we free'd the arrays earlier, we need to
-		   follow Dr. Morrison's Golden Rule of Pointers and 
-		   check if the pointer is not NULL before freeing */
 		free( str_array[ iter ] );
+		
 	}
 }
 
-// 5b - We will comment out i in Irish
-//		and we will write the pointer arithmetic code:
 void init_values( char** str_array ){
 	str_array[0][0] = 'N';
 	str_array[0][1] = 'o';
@@ -48,20 +48,11 @@ void init_values( char** str_array ){
     str_array[3][0] = 'I';
     str_array[3][1] = 'r';
     str_array[3][2] = 'i';
-	
-	/* fprintf( stdout, "%p, %lu\n", str_array, 3*sizeof(char *) );
-	fprintf( stdout, "Address: %p\n", (void *)str_array + 3*sizeof(char *) );
-	fprintf( stdout, "Address: %p\n", &str_array[3] );
-	fprintf( stdout, "Address: %p\n", (char *)((void *)str_array + 3*sizeof(char *)) );
-	fprintf( stdout, "Address: %p\n", &(str_array[3][2]) );
-	fprintf( stdout, "Address: %p\n", 
-		(*( (char *)((void *)str_array + 3*sizeof(char *)) )) ); */
-	
     str_array[3][3] = 's';
     str_array[3][4] = 'h';
     str_array[3][5] = '\0';
 	
-	// Step 8. To make the last string NULL
+	// Step 9. To make the last string NULL
 	// Free str_array[4]
 	// Set str_array[4] equal to NULL 
 	free( str_array[4] );
@@ -76,7 +67,7 @@ void init_values( char** str_array ){
 void print_arrays( char** str_array ){
 
 	// Checking if the first pointer is not NULL = Structure
-	if( str_array == NULL )
+	if( str_array[0] == NULL )
 		return;
 
 	// Loop through all the strings
@@ -93,37 +84,48 @@ void print_arrays( char** str_array ){
 				// Print the character
 				fprintf( stdout, "%c", str_array[iter][jter] );
 			}
-
+			
 			// Print a space between the words
 			fprintf( stdout, " " );
+
 		}
 	} 
 	
-	// Print a new line after each print out 
+	// Print a new line after each print out - Outside the loop
 	fprintf( stdout, "\n" );
+
+
 }
 
-
+// Step 7. Borrow From Next 
+// Write the function call
+// Remember: When passing by reference
+//		Data is passed by reference 
+//		Structure is passed by value 
 void borrow_from_next( char** str_array ){
 	
-	if( str_array[0] != NULL ){
-		
-		char* temp = str_array[0];
-
-		long unsigned int iter;
-		for( iter = 0; str_array[iter+1] != NULL; ++iter ){
-			
-			str_array[iter] = str_array[iter + 1];
-			
-		}
-		
-		// Set the iter values to NULL 
-		str_array[iter] = NULL;
-		
-		// Free the temporary array 
-		free( temp );
+	// 7-b Checking if the first pointer is not NULL = Structure
+	if( str_array == NULL )
+		return;
 	
+	// 7-c Set a temporary pointer to str_array[0] 
+	char* temp = str_array[0];
+
+	// 7-d Loop through until the NEXT string is null
+	long unsigned int iter;
+	for( iter = 0; str_array[iter+1] != NULL; ++iter ){
+		
+		// Set the current pointer equal to the next pointer 
+		str_array[iter] = str_array[iter + 1];
+		
 	}
+	
+	// 7-e Set the iter pointer to NULL 
+	str_array[iter] = NULL;
+	
+	// 7-f Free the temporary array 
+	free( temp );
+	
 }
 
 
@@ -145,13 +147,20 @@ int main( void ){
 	print_arrays( str_array );
 	
 	
-	// 7. We will loop through the 
+	// 8. We will loop through the strings. Follow Dr. Morrison's Golden Rule of Pointers
+	// Check if the array is not NULL
 	if( str_array != NULL ){
 
+		// Each loop, check if the NULL pointer is not NULL 
 		while( str_array[0] != NULL ){
+			
+			// Call Borrow From Next 
 			borrow_from_next( str_array );
+			
+			// Call Print Arrays 
 			print_arrays( str_array );
 		}
+		
 	}
 
 	

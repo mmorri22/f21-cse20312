@@ -27,10 +27,8 @@ void free_arr( char** str_array ){
 //		We will also see how de-referencing works by changing
 //		all the str_array to *sta_array
 void init_values( char** str_array ){
+	
 	str_array[0][0] = 'N';
-	
-	fprintf( stdout, "%c\n", str_array [0][0] );
-	
 	str_array[0][1] = 'o';
 	str_array[0][2] = 't';
 	str_array[0][3] = 'r';
@@ -38,7 +36,7 @@ void init_values( char** str_array ){
     str_array[0][5] = '\0';
     str_array[1][0] = 'D';
     str_array[1][1] = 'a';
-    str_array[1][3] = 'm';
+    str_array[1][2] = 'm';
     str_array[1][3] = 'e';
     str_array[1][4] = '\0';
     str_array[2][0] = 'F';
@@ -52,13 +50,13 @@ void init_values( char** str_array ){
     str_array[2][8] = '\0';
     str_array[3][0] = 'I';
     str_array[3][1] = 'r';
-    str_array[3][4] = 'i';
-    str_array[3][5] = 'h';
-    str_array[3][6] = '\0';
+    str_array[3][2] = 'i';
+    str_array[3][3] = 's';
+    str_array[3][4] = 'h';
+    str_array[3][5] = '\0';
 	
-	// Step 8. To make the last string NULL
+	// Step 9. To make the last string NULL
 	// Free str_array[4] then set str_array[4] equal to NULL 
-	
 	str_array[4] = NULL;
 }
 
@@ -87,15 +85,15 @@ void init_values( char** str_array ){
 
 
 	
-	// Print a new line after each print out 
-	fprintf( stdout, "\n" );
+	// Print a new line after each print out - Outside the loop
+	
 }
 
 
 
 int main( void ){
 
-	// 1. Initially allocate the array 
+	// 1. Initially allocate the array for char** of size NUMSTRS  
 	
 	// 2. Call the malloc function. Then, go to the end of main for #3
 	
@@ -105,7 +103,14 @@ int main( void ){
 	//    First, we will write the function 
 	//    Then we will come back here and call it.
 	
-	
+	// 8. We will loop through the strings. Follow Dr. Morrison's Golden Rule of Pointers
+	// Check if the array is not NULL
+
+		// Each loop, check if the NULL pointer is not NULL 
+			
+			// Call Borrow From Next 
+			
+			// Call Print Arrays 
 	
 	// 3. Call the free function to free all the arrays
 	

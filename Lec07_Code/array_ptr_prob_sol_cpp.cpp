@@ -16,6 +16,9 @@ void init_values( std::vector< std::string >& str_vector ){
 
 void print_vector( const std::vector< std::string >& str_vector ){
 	
+	if( str_vector.size() == 0 )
+		return;
+	
 	for( long unsigned int iter = 0; iter < str_vector.size(); ++iter ){
 	
 		std::cout << str_vector.at( iter ) << " ";
