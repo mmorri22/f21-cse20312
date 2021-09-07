@@ -27,7 +27,7 @@ void push_front( struct sllist* the_list, int new_data );
 int pop_front( struct sllist* the_list );
 
 
-void print_list( struct sllist* the_list );
+void print_list( struct sllist* the_list )	// Missing Semicolon!
 
 
 void delete_node( struct sll_node** curr_node );
