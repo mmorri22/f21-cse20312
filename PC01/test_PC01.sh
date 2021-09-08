@@ -153,6 +153,7 @@ echo "Testing make PC01" >> $SCRIPT_OUT
 make clean >> $SCRIPT_OUT
 
 # make decode comparison variables
+MAKE_CLEAN_FORCE="rm -rf *.o PC01"
 MAKE_PC01_TEST="make PC01"
 MAKE_GCC="gcc"
 MAKE_WALL="-Wall"
@@ -160,9 +161,11 @@ MAKE_WEXTRA="-Wextra"
 MAKE_WCONVERSION="-Wconversion"
 MAKE_WERROR="-Werror"
 MAKE_STD_C11="-std=c11"
+MAKE_PC01_CLEAN_FORCE=$( $MAKE_CLEAN_FORCE )
 MAKE_PC01_TEST_RESULT=$( $MAKE_PC01_TEST )
 
 # Delete redirect and send make result to redirect 
+echo $MAKE_PC01_CLEAN_FORCE >> $REDIRECT
 echo $MAKE_PC01_TEST_RESULT >> $REDIRECT
 
 # Send results to the script
