@@ -129,7 +129,7 @@ if grep -e "Nothing to be done" $REDIRECT
 then
 	
 	echo "$MAKE_CLEAN_TEST did not pass" >> $SCRIPT_OUT
-	echo "$CHECK_CLEAN / $CHECK_CLEAN" >> $SCRIPT_OUT
+	echo "0 / $CHECK_CLEAN" >> $SCRIPT_OUT
 
 else
 
@@ -200,13 +200,7 @@ fi
 
 # Now the executable SHOULD exist! 
 echo "-----------------------------" >> $SCRIPT_OUT
-if test -f "PC01"; then
-
-	echo "PC01 Successfully Compiled!" >> $SCRIPT_OUT
-	((STUDENT_GRADE += $COMPILATION_TEST))
-	echo "$COMPILATION_TEST / $COMPILATION_TEST" >> $SCRIPT_OUT
-
-else
+if grep -e "all warnings being treated as errors" $REDIRECT; then
 
     echo "PC01 did not successfully compile." >> $SCRIPT_OUT
 	echo "Executables must be cleaned prior to GitHub push." >> $SCRIPT_OUT
@@ -215,6 +209,12 @@ else
 	echo "Here are the files currently in the project folder." >> $SCRIPT_OUT
 	CHECK_O_TEST_RESULT=$( $LIST_OUTPUTS )
 
+else
+
+	echo "PC01 Successfully Compiled!" >> $SCRIPT_OUT
+	((STUDENT_GRADE += $COMPILATION_TEST))
+	echo "$COMPILATION_TEST / $COMPILATION_TEST" >> $SCRIPT_OUT
+	
 fi
 
 echo "" >> $SCRIPT_OUT
