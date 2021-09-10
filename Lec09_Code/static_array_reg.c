@@ -9,35 +9,20 @@ static unsigned int results_buffer[NMAX];
 
 void fibonacci()
 {
-	/* Step 1: Comment out this line of code. You can simply put // in front of it */
-	// results_buffer[0] = 1;
 	
-	/* Step 2: Replace it by setting a "first" unsigned int variable equal to 1 */
 	unsigned int first_num = 1;
 	
-	/* Step 3: Comment out this line of code */
-	// results_buffer[1] = 1;
-	
-	/* Step 4: Replace it by setting a "second" unsigned int variable equal to 1 */
 	unsigned int second_num = 1;
 	
 	long unsigned int iter;
 	for (iter = 2; iter < NMAX; iter++) {
 		
-		/* Step 5: Create a third unsigned int variable equal 
-				   equal to the sum of first and second */
 		unsigned int third_num = first_num + second_num;
 		
-		/* Step 6: Comment out this line */
-		// results_buffer[ iter ] = results_buffer[ iter-2 ] + results_buffer[ iter - 1 ];
-		
-		/* Step 7: Set results_buffer[ iter ] to your third unsigned int variable */
 		results_buffer[ iter ] = third_num;
 		
-		/* Step 8: Set your first variable equal to your second variable */
 		first_num = second_num;
 		
-		/* Step 9: Set your second variable equal to your third variable */
 		second_num = third_num;
 
 	}

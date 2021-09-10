@@ -10,8 +10,8 @@ void fibonacci()
 	/* An array of 25 unsigned ints stored on the Heap */
 	unsigned int* results_buffer = (unsigned int *)malloc( NMAX * sizeof(int) );
 	
-	/* First array element */
-	results_buffer[0] = 1;
+	/* First array element  */
+	results_buffer[0] = 1; 
 	
 	/* Second array element */
 	results_buffer[1] = 1;

@@ -29,7 +29,7 @@ void fibonacci()
 
 int main(void) {
 	
-	/* Run 10,000,000 tests */
+	/* Run 10,000,000 tests  */
 	long int num_tests = 10000000;
 
 	/* clock_t is a type from #include <time.h> */
