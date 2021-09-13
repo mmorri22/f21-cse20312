@@ -7,7 +7,7 @@ typedef struct sll_node{
 	char data;
 	struct sll_node* next_node;	
 	
-};
+}sll_node;
 
 
 /* Singly Linked List Struct */
@@ -119,6 +119,8 @@ int main( const int argc, const char* argv[] )
     print_list( the_list->head_node );
 
     destructor( the_list->head_node );
+	
+	free( the_list );
 
     return 0;
 }

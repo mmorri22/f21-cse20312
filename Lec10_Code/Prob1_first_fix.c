@@ -7,7 +7,7 @@ typedef struct sll_node{
 	char data;
 	struct sll_node* next_node;	
 	
-};
+}sll_node;
 
 
 /* Singly Linked List Struct */
