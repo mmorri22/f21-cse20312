@@ -60,8 +60,6 @@ void push_front( dllist* the_list, int the_value ){
 // Step 13 - Push Front 
 void push_back( dllist* the_list, int the_value ){
 	
-	// 13 - 1 We can copy everything up through the empty head node from Insert 
-	
 	// Create a dll_node pointer called insert_node
 	dll_node* insert_node = (dll_node*)malloc( sizeof(dll_node) );
 	
