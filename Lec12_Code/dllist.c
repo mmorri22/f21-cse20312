@@ -143,10 +143,14 @@ void pop_front( dllist* the_list ){
 	
 	else if( the_list->head_node == the_list->tail_node ){
 		
-		free( the_list->head_node );
+		// free( the_list->head_node );
+		
+		dll_node* reference = the_list->head_node;
 		
 		the_list->head_node = NULL;
 		the_list->tail_node = NULL;
+		
+		free( reference );
 		
 		return;
 	}
