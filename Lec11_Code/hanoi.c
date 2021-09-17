@@ -90,13 +90,13 @@ void pop( stack* the_stack ){
 	
 	// Otherwise, move the node and free
 	// Set a reference pointer to head_node
-	// stack_node* reference = the_stack->head_node;
+	stack_node* reference = the_stack->head_node;
 	
 	// Set the head_node to head_node's next_node;
 	the_stack->head_node = the_stack->head_node->next_node;
 	
 	// Free the reference - Will comment out in class 
-	// free( reference );
+	free( reference );
 	
 	
 }

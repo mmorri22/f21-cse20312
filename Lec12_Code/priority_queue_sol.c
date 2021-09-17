@@ -206,58 +206,58 @@ void pop_back( priority_queue* the_list ){
 void insert_sort( priority_queue* the_pq, int the_value ){
 	
 	// Create a pq_node pointer called insert_node
-	
+	pq_node* insert_node = (pq_node*)malloc( sizeof(pq_node) );
 	
 	// Set the insert_node's data to the_value and next_node to NULL 
-	
-	
-	
+	insert_node->data = the_value;
+	insert_node->prev_node = NULL;
+	insert_node->next_node = NULL;
 	
 	// Dr. Morrison's Golden Rule of Pointers 
 	// Check if the list is empty
-	
+	if( the_pq->head_node == NULL && the_pq->tail_node == NULL ){
 		
 		// Set the head node equal to insert_node 
-		
+		the_pq->head_node = insert_node;
 
 		// Set the tail node equal to insert_node 
-		
+		the_pq->tail_node = insert_node;
 		
 		// And return
-		
-	
+		return;
+	}
 	
 	// If the_value is less than the head node, push front 
-	
+	if( the_value < the_pq->head_node->data ){
 		
+		push_front( the_pq, the_value );
 		
+		return;
+	}
+	else if( the_value > the_pq->tail_node->data ){
 		
+		push_back( the_pq, the_value );
 		
-	
-	
-		
-		
-		
-		
-	
+		return;
+	}
 	
 	// Otherwise, create a curr_ptr equal to the head_node 
-	
-	
+	pq_node* prev_ptr = the_pq->head_node;
+	pq_node* curr_ptr = prev_ptr->next_node;
 	
 	// Iterate until the next_node is NULL
-	
+	while( the_value >= curr_ptr->data ){
 		
-		
-		
-	
+		prev_ptr = curr_ptr;
+		curr_ptr = curr_ptr->next_node;
+	}
 	
 	// Set curr_ptr's next_node equal to insert_node
+	insert_node->prev_node = prev_ptr;
+	prev_ptr->next_node = insert_node;
 	
-	
-	
-	
-	
+	insert_node->next_node = curr_ptr;
+	curr_ptr->prev_node = insert_node;
 	
 }
 
