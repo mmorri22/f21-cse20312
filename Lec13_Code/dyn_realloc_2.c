@@ -6,11 +6,6 @@ int main( void ){
 	long unsigned int init_len = 5;
 	int* dyn_int_array = (int *)malloc( init_len * sizeof(int) );
 
-	// Allocate a second dynamic array
-	// char* dyn_int_array_2 = (char *)malloc( init_len * sizeof(char) );
-
-	// Print the addresses of both
-	// fprintf( stdout, "Array 1 is at %p, and Array 2 is at %p\n\n", dyn_int_array, dyn_int_array_2 );
 
 	char read_char = 'y';
 	long unsigned int num_read = 0;
@@ -53,7 +48,6 @@ int main( void ){
 
 	// Free the Dynamically Allocated Arrays
 	free( dyn_int_array );
-	// free( dyn_int_array_2 );
 
 	return 0;
 
