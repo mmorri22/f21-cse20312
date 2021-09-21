@@ -25,7 +25,7 @@ void constructor( bst* int_bst ){
 	
 }
 
-/*
+
 void destructor( bst* int_bst ){
 	
 	if( int_bst->root == NULL )
@@ -33,62 +33,22 @@ void destructor( bst* int_bst ){
 	
 }
 
-*/
+/* Note: Deliberate logical error in function declaration */
+void insert( bst_node* curr_node, int value ){
+	
 
-void insert( bst_node** curr_node, int value ){
-	
-	// Dr. Morrison's Golden rule of pointers 
-	if( *curr_node == NULL ){
-		
-		// We found the place to insert! Now create the node.
-		bst_node* insert_node = (bst_node*)malloc( sizeof(bst_node) );
-		insert_node->value = value;
-		insert_node->left = NULL;
-		insert_node->right = NULL;
-		
-		// Finally, set the curr_node equal to insert_node
-		*curr_node = insert_node;
-	
-		return;
-	
-	}
-	
-	else if( value < (*curr_node)->value )
-		insert( &((*curr_node)->left), value );
-	
-	else if( (*curr_node)->value < value )
-		insert( &((*curr_node)->right), value );
-	
-	else
-		fprintf( stdout, "%d is already in the tree\n", value );
 }
 
 
+/* 
 void in_order_traversal( bst_node* curr_node ){
 	
-	if( curr_node == NULL )
-		return;
-	
-	in_order_traversal( curr_node->left );
-	
-	fprintf( stdout, "%d ", curr_node->value );
-	
-	in_order_traversal( curr_node->right );
 	
 }
 
 
-/*
 void pre_order_traversal( bst_node* curr_node ){
 	
-	if( curr_node == NULL )
-		return;
-	
-	fprintf( stdout, "%d ", curr_node->value );
-	
-	in_order_traversal( curr_node->left );
-	
-	in_order_traversal( curr_node->right );
 	
 }
 
@@ -128,15 +88,24 @@ int main( const int argc, const char* argv[] ){
 		
 		int input_value = atoi( argv[iter] );
 		
-		insert( &(int_bst->root), input_value );
+		insert( int_bst->root, input_value );
 		
 	}
 	
 	// Print outputs
-	
+	/* 
+	fprintf( stdout, "In-order traversal  : " );
 	in_order_traversal( int_bst->root );
-	
 	fprintf( stdout, "\n" );
+	
+	fprintf( stdout, "Pre-order traversal : " );
+	pre_order_traversal( int_bst->root );
+	fprintf( stdout, "\n" );
+
+	fprintf( stdout, "Post-order traversal: " );
+	post_order_traversal( int_bst->root );
+	fprintf( stdout, "\n" );
+	*/
 	
 	
 	// Free the Binary Search Tree pointer 
