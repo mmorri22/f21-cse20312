@@ -40,33 +40,39 @@ void insert( bst_node* curr_node, int value ){
 }
 
 
-/* 
 void in_order_traversal( bst_node* curr_node ){
 	
+
 	
 }
 
 
 void pre_order_traversal( bst_node* curr_node ){
 	
+	if( curr_node == NULL )
+		return;
+	
+	fprintf( stdout, "%d ", curr_node->value );
+	
+	pre_order_traversal( curr_node->left );
+	
+	pre_order_traversal( curr_node->right );
 	
 }
 
 
 void post_order_traversal( bst_node* curr_node ){
 	
+	if( curr_node == NULL )
+		return;
 	
+	post_order_traversal( curr_node->left );
+	
+	post_order_traversal( curr_node->right );
+	
+	fprintf( stdout, "%d ", curr_node->value );
 	
 }
-
-
-void level_order_traversal( bst_node* curr_node ){
-	
-	
-	
-}
-
-*/
 
 
 int main( const int argc, const char* argv[] ){

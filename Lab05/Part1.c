@@ -9,7 +9,9 @@ int main(void)
  
 	for (i = 0; i >= 0; ++i) {
  		sum += data[i];
- 	}
+ 	
+		fprintf( stdout, "Current sum: %d and current data: %d\n", sum, data[i] );
+	}
  
 	fprintf( stdout, "sum = %d \n", sum);
  
