@@ -11,7 +11,7 @@ int main(void)
  		sum += data[i];
  	}
  
-	fprintf( stdout, "sum = %i \n", sum);
+	fprintf( stdout, "sum = %d \n", sum);
  
 	return 0;
 }
