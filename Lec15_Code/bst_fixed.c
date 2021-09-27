@@ -35,10 +35,10 @@ void destructor( bst* int_bst ){
 
 */
 
-void insert( bst_node* curr_node, int value ){
+void insert( bst_node** curr_node, int value ){
 	
 	// Dr. Morrison's Golden rule of pointers 
-	if( curr_node == NULL ){
+	if( *curr_node == NULL ){
 		
 		// We found the place to insert! Now create the node.
 		bst_node* insert_node = (bst_node*)malloc( sizeof(bst_node) );
@@ -47,10 +47,19 @@ void insert( bst_node* curr_node, int value ){
 		insert_node->right = NULL;
 		
 		// Finally, set the curr_node equal to insert_node
-		curr_node = insert_node;
+		*curr_node = insert_node;
 		
-		fprintf( stdout, "In insert %d\n", curr_node->value );
+		fprintf( stdout, "In insert %d\n", (*curr_node)->value );
 		
+	}
+	
+	if( value < (*curr_node)->value ){
+		
+		insert( &((*curr_node)->left), value );
+	}
+	else if( value > (*curr_node)->value ){
+		
+		insert( &((*curr_node)->right), value );
 	}
 }
 
@@ -112,7 +121,7 @@ int main( const int argc, const char* argv[] ){
 		
 		int input_value = atoi( argv[iter] );
 		
-		insert( int_bst->root, input_value );
+		insert( &(int_bst->root), input_value );
 		
 		in_order_traversal( int_bst->root );
 		
