@@ -128,5 +128,5 @@ void reverse_tree( bst_node** curr_node ){
 	if( *curr_node == NULL )
 		return;	
 	
-	
+	// Rest of logic goes here	
 }
