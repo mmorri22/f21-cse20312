@@ -10,38 +10,6 @@ PP := g++
 FLAGS := -O2 -g -Wall -Wextra -Wconversion -Wshadow -Werror -lm
 CXXFLAGS := -m64 -std=c++11 -Weffc++ $(FLAGS)
 
-# C++ Hello, World Example
-# Command: make hello
-hello.o: hello.cpp
-	$(PP) $(CXXFLAGS) -c hello.cpp
-
-hello_objs :=  hello.o
-
-hello: $(hello_objs)
-	$(PP) $(CXXFLAGS) -o hello $(hello_objs)
-	
-	
-# C++ output Example
-# Command: make output
-output.o: output.cpp
-	$(PP) $(CXXFLAGS) -c output.cpp
-
-output_objs :=  output.o
-
-output: $(output_objs)
-	$(PP) $(CXXFLAGS) -o output $(output_objs)
-
-
-# C++ call_by Example
-# Command: make call_by
-call_by.o: call_by.cpp
-	$(PP) $(CXXFLAGS) -c call_by.cpp
-
-call_by_objs :=  call_by.o
-
-call_by: $(call_by_objs)
-	$(PP) $(CXXFLAGS) -o call_by $(call_by_objs)
-
 
 # C++ cin Example
 # Command: make cin
@@ -96,10 +64,77 @@ namespace_direct_objs :=  namespace_direct.o
 
 namespace_direct: $(namespace_direct_objs)
 	$(PP) $(CXXFLAGS) -o namespace_direct $(namespace_direct_objs)
+
+
+# C++ const Example
+# Command: make const
+const.o: const.cpp
+	$(PP) $(CXXFLAGS) -c const.cpp
+
+const_objs :=  const.o
+
+const: $(const_objs)
+	$(PP) $(CXXFLAGS) -o const $(const_objs)
+
+
+# C++ func_over Example
+# Command: make func_over
+func_over.o: func_over.cpp
+	$(PP) $(CXXFLAGS) -c func_over.cpp
+
+func_over_objs :=  func_over.o
+
+func_over: $(func_over_objs)
+	$(PP) $(CXXFLAGS) -o func_over $(func_over_objs)
+
+
+# C++ ambig Example
+# Command: make ambig
+ambig.o: ambig.cpp
+	$(PP) $(CXXFLAGS) -c ambig.cpp
+
+ambig_objs :=  ambig.o
+
+ambig: $(ambig_objs)
+	$(PP) $(CXXFLAGS) -o ambig $(ambig_objs)
+
+
+# C++ template Example
+# Command: make template
+template.o: template.cpp
+	$(PP) $(CXXFLAGS) -c template.cpp
+
+template_objs :=  template.o
+
+template: $(template_objs)
+	$(PP) $(CXXFLAGS) -o template $(template_objs)
+
+
+# C++ string_vector Example
+# Command: make string_vector
+string_vector.o: string_vector.cpp
+	$(PP) $(CXXFLAGS) -c string_vector.cpp
+
+string_vector_objs :=  string_vector.o
+
+string_vector: $(string_vector_objs)
+	$(PP) $(CXXFLAGS) -o string_vector $(string_vector_objs)	
+
+
+# C++ vector Example
+# Command: make vector
+vector.o: vector.cpp
+	$(PP) $(CXXFLAGS) -c vector.cpp
+
+vector_objs :=  vector.o
+
+vector: $(vector_objs)
+	$(PP) $(CXXFLAGS) -o vector $(vector_objs)
 	
 
 # Make all
-all: hello output call_by cin cin_str namespace_fixed
+all: cin cin_str namespace_fixed namespace_direct const func_over template string_vector vector
 
 # Make clean
-clean : ; rm -rf *.o hello output call_by cin cin_str namespace_fixed namespace_direct
+clean :
+	rm -rf *.o cin cin_str namespace_fixed namespace_direct const func_over template string_vector vector
