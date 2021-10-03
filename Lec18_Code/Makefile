@@ -29,8 +29,8 @@ cin_str.o: cin_str.cpp
 
 cin_str_objs :=  cin_str.o
 
-cin_str_str: $(cin_str_str_objs)
-	$(PP) $(CXXFLAGS) -o cin_str_str $(cin_str_str_objs)
+cin_str: $(cin_str_objs)
+	$(PP) $(CXXFLAGS) -o cin_str $(cin_str_objs)
 	
 	
 # C++ namespace Example

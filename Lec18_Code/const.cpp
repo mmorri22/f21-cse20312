@@ -19,7 +19,7 @@ int main(){
 	double radius = 5;
 	
 	std::cout << "The circle's radius is " << radius << std::endl;
-	std::cout << "The value of Pi is " << PI << std::endl;
+	std::cout << "The value of Pi is " << PI << " " << &PI << std::endl;
 	
 	std::cout << "The area of the circle is " 
 		<< CircleArea( radius ) << std::endl;

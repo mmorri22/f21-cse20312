@@ -22,10 +22,12 @@ int main(){
 
 	std::string strX = "Hello, World";
 	int tempX = 25;
+	float float_x = (float)22.9;
 	
 	PrintMe(strX);
 	PrintMe(tempX);
 	PrintMe(strX, tempX);
+	PrintMe(float_x);
 		
 	return 0;
 }

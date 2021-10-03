@@ -5,8 +5,8 @@
 #define ENDL std::endl
 #define STRING std::string
 
-template<class T> 
-void printFunc(T& t_var){
+template<class Generic> 
+void printFunc(Generic& t_var){
 	
 	COUT << t_var << ENDL;
 	
