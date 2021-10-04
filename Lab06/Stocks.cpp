@@ -40,9 +40,9 @@ void maxProfit(const VECTOR<int>& stocks){
 	long unsigned int global_max_loc = 0; 
 	
 	int local_min_val = stocks.at(0);
-	int global_min_val = stocks.at(0);
-	int local_max_val = stocks.at(0);
-	int global_max_val = stocks.at(0);
+	int global_min_val = local_min_val;
+	int local_max_val = local_min_val;
+	int global_max_val = local_min_val;
 	
 	/* Remember, access the registers for speed compared to the array on the Heap */
 	for(long unsigned int iter = 1; iter < stocks.size(); iter++){
@@ -53,7 +53,7 @@ void maxProfit(const VECTOR<int>& stocks){
 			local_min_loc = iter;
 			local_min_val = stocks.at(iter);
 			local_max_loc = iter;
-			local_max_val = stocks.at(iter);
+			local_max_val = local_min_val;
 			
 		}
 		
