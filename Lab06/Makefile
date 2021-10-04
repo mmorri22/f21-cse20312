@@ -32,104 +32,29 @@ Stocks: $(Stocks_objs)
 
 
 # Command: make Product
-ProductObjs := $(OBJECTS)/Product.o
+ProductObjs := Product.o
 
 Product: $(ProductObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/Product $(ProductObjs)
-	$(EXE)/./Product
+	$(PP) $(CXXFLAGS) -o Product $(ProductObjs)
 
-$(OBJECTS)/Product.o: $(PROG)/Product.cpp $(CLASSES)/DynArr.h
-	$(PP) $(CXXFLAGS) -c $(PROG)/Product.cpp -o $@
-
-	
+Product.o: Product.cpp
+	$(PP) $(CXXFLAGS) -c Product.cpp -o $@
 
 
-# Command: make maxSub1
-maxSub1Objs := $(OBJECTS)/maxSub1.o
+# Command: make Product_Lab
+Product_LabObjs := Product_Lab.o
 
-maxSub1: $(maxSub1Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/maxSub1 $(maxSub1Objs)
-	$(EXE)/./maxSub1
+Product_Lab: $(Product_LabObjs)
+	$(PP) $(CXXFLAGS) -o Product_Lab $(Product_LabObjs)
 
-$(OBJECTS)/maxSub1.o: $(PROG)/maxSub1.cpp $(CLASSES)/DynArr.h
-	$(PP) $(CXXFLAGS) -c $(PROG)/maxSub1.cpp -o $@
+Product_Lab.o: Product_Lab.cpp
+	$(PP) $(CXXFLAGS) -c Product_Lab.cpp -o $@
 
-
-
-# Command: make maxSub2
-maxSub2Objs := $(OBJECTS)/maxSub2.o
-
-maxSub2: $(maxSub2Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/maxSub2 $(maxSub2Objs)
-	$(EXE)/./maxSub2
-
-$(OBJECTS)/maxSub2.o: $(PROG)/maxSub2.cpp $(CLASSES)/DynArr.h
-	$(PP) $(CXXFLAGS) -c $(PROG)/maxSub2.cpp -o $@
-
-
-
-# Command: make maxSub3
-maxSub3Objs := $(OBJECTS)/maxSub3.o
-
-maxSub3: $(maxSub3Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/maxSub3 $(maxSub3Objs)
-	$(EXE)/./maxSub3
-
-$(OBJECTS)/maxSub3.o: $(PROG)/maxSub3.cpp $(CLASSES)/DynArr.h
-	$(PP) $(CXXFLAGS) -c $(PROG)/maxSub3.cpp -o $@
-
-
-
-# Command: make maxSub4
-maxSub4Objs := $(OBJECTS)/maxSub4.o
-
-maxSub4: $(maxSub4Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/maxSub4 $(maxSub4Objs)
-	$(EXE)/./maxSub4
-
-$(OBJECTS)/maxSub4.o: $(PROG)/maxSub4.cpp $(CLASSES)/DynArr.h
-	$(PP) $(CXXFLAGS) -c $(PROG)/maxSub4.cpp -o $@
-
-
-
-# Command: make maxSub
-maxSubObjs := $(OBJECTS)/maxSub.o
-
-maxSub: $(maxSubObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/maxSub $(maxSubObjs)
-	$(EXE)/./maxSub
-
-$(OBJECTS)/maxSub.o: $(PROG)/maxSub.cpp $(CLASSES)/DynArr.h
-	$(PP) $(CXXFLAGS) -c $(PROG)/maxSub.cpp -o $@
-
-
-
-# Command: make maxProd1
-maxProd1Objs := $(OBJECTS)/maxProd1.o
-
-maxProd1: $(maxProd1Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/maxProd1 $(maxProd1Objs)
-	$(EXE)/./maxProd1
-
-$(OBJECTS)/maxProd1.o: $(PROG)/maxProd1.cpp $(CLASSES)/DynArr.h
-	$(PP) $(CXXFLAGS) -c $(PROG)/maxProd1.cpp -o $@
-
-
-
-# Command: make maxProd
-maxProdObjs := $(OBJECTS)/maxProd.o
-
-maxProd: $(maxProdObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/maxProd $(maxProdObjs)
-	$(EXE)/./maxProd
-
-$(OBJECTS)/maxProd.o: $(PROG)/maxProd.cpp $(CLASSES)/DynArr.h
-	$(PP) $(CXXFLAGS) -c $(PROG)/maxProd.cpp -o $@
 
 
 # Make all
-all: Stocks_1 Stocks
+all: Stocks_1 Stocks Product Product_Lab
 
 # Make clean
 clean :
-	rm -rf *.o Stocks_1 Stocks
+	rm -rf *.o Stocks_1 Stocks Product Product_Lab

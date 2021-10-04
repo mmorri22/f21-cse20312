@@ -31,7 +31,7 @@ void maxProfit(const VECTOR<int>& stocks){
 		
 		COUT << "No values to calculate" << ENDL;
 		
-		return;
+		exit( EXIT_FAILURE );
 	}
 	
 	long unsigned int local_min_loc = 0; 
@@ -114,5 +114,5 @@ int main( const int argc, const char* argv[] ){
 	
 	maxProfit(stocks);
 	
-	return 0;
+	return EXIT_SUCCESS;
 }
