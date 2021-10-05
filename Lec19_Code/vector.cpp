@@ -4,7 +4,7 @@
 
 
 template<class Gen>
-void printVecElems( std::vector< Gen > theVec ){
+void printVecElems( const std::vector< Gen >& theVec ){
 	
 	for(long unsigned int i = 0; i < theVec.size(); ++i){
 		
