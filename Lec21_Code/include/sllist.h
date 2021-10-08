@@ -63,21 +63,22 @@ class sllist{
 		
 		sllist<T>& operator=(const sllist<T>& assign){
 				
-			// Check the address 
+			// Check the addresses are the same
 			if(this != &assign){
 
-				sll_node<T>* curr_node = assign.curr_node;
+				sll_node<T>* curr_node = assign.head_node;
 				
 				while(curr_node != NULL){
 					
-					this->Insert(curr_node->data);
+					this->insert(curr_node->data);
 
 					curr_node = curr_node->next;
 					
 				}
 			}
-			return *this;
 			
+			// Return the address
+			return *this;
 		}
 		
 		void insert( const T& new_data ){

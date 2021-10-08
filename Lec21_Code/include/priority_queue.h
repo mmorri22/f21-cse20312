@@ -1,30 +1,32 @@
-#ifndef STACK_H
-#define STACK_H
+#ifndef PRIORITY_QUEUE_H
+#define PRIORITY_QUEUE_H
 
-#include "sllist.h"
+#include "dllist.h"
 
 template< class T >
-class stack{
+class priority_queue{
 	
 	private:
 	
-		sllist<T>* the_list;
+		dllist<T>* the_list;
 		
 	public:
 	
-		stack() : the_list( new sllist<T>() ) {}
+		priority_queue() : the_list( new dllist<T>() ) {}
 		
-		~stack() {
+		~priority_queue() {
 			
 			delete the_list;
+			
 		}
 		
-		stack(const stack<T>& copy) : the_list( new sllist<T>() ) {
+		priority_queue(const priority_queue<T>& copy) : the_list( new dllist<T>() ) {
 			
 			*the_list = copy.the_list;
+			
 		}
 		
-		stack<T>& operator=(const stack<T>& assign){
+		priority_queue<T>& operator=(const priority_queue<T>& assign){
 				
 			// Check the address 
 			if(this != &assign){
@@ -33,17 +35,24 @@ class stack{
 
 			}
 			return *this;
+			
 		}
 		
 		void push( const T& new_data ){
 			
-			the_list->push_front( new_data );
+			the_list->insert_sort( new_data );
 			
 		}
 		
-		T top(){
+		T front(){
 			
 			return the_list->front();
+			
+		}
+		
+		T back(){
+			
+			return the_list->back();
 			
 		}
 		
