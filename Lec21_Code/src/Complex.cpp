@@ -18,11 +18,14 @@ int Complex::getImag() const{
 	return imag;
 }
 
-Complex Complex::operator+(const Complex &rhs) const{ 
-	 Complex sol; 
-	 sol.real = real + rhs.real; 
-	 sol.imag = imag + rhs.imag; 
-	 return sol; 
+
+Complex Complex::operator+( const Complex& rhs ) const{
+	
+	Complex sol;
+	sol.real = real + rhs.real;
+	sol.imag = imag + rhs.imag;
+	
+	return sol;
 }
 
 Complex Complex::operator-(const Complex &rhs) const{
@@ -31,6 +34,7 @@ Complex Complex::operator-(const Complex &rhs) const{
 	 sol.imag = imag - rhs.imag; 
 	 return sol; 
 } 
+
 
 bool Complex::operator==(const Complex &rhs) const{ 
 	 if(real == rhs.real && imag == rhs.imag){
@@ -63,6 +67,7 @@ bool Complex::operator>(const Complex &rhs) const{
 	
 }
 
+
 std::ostream& operator<<( std::ostream& output, const Complex& C ){ 
 
 	output << C.real;
@@ -89,5 +94,3 @@ std::istream& operator>>( std::istream& input, Complex& C ){
 	return input;
 	
 }
-
-

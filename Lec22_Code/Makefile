@@ -14,26 +14,15 @@ EXE := exe
 OBJ := obj
 
 
-# Command: make Prob1 - Max Heap Review
-Prob1Objs := $(OBJ)/Prob1.o 
 
-Prob1: $(Prob1Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/Prob1 $(Prob1Objs)
-	$(EXE)/./Prob1
+# Command: make test_min_heap
+test_min_heapObjs := $(OBJ)/test_min_heap.o 
 
-$(OBJ)/Prob1.o: $(SRC)/Prob1.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/Prob1.cpp -o $@
+test_min_heap: $(test_min_heapObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/test_min_heap $(test_min_heapObjs)
 
-
-# Command: make testMaxHeap
-testMaxHeapObjs := $(OBJ)/testMaxHeap.o 
-
-testMaxHeap: $(testMaxHeapObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/testMaxHeap $(testMaxHeapObjs)
-	$(EXE)/./testMaxHeap
-
-$(OBJ)/testMaxHeap.o: $(SRC)/testMaxHeap.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/testMaxHeap.cpp -o $@
+$(OBJ)/test_min_heap.o: $(SRC)/test_min_heap.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/test_min_heap.cpp -o $@
 
 	
 # Command: make testMinHeap
@@ -59,16 +48,6 @@ $(OBJ)/FindMedian.o: $(SRC)/FindMedian.cpp
 	$(PP) $(CXXFLAGS) -c $(SRC)/FindMedian.cpp -o $@
 
 
-# Command: make Prob3 - Min Heap Review
-Prob3Objs := $(OBJ)/Prob3.o 
-
-Prob3: $(Prob3Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/Prob3 $(Prob3Objs)
-	$(EXE)/./Prob3
-
-$(OBJ)/Prob3.o: $(SRC)/Prob3.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/Prob3.cpp -o $@
-
 
 # Make all
 all: FindKthLargest FindMedian Prob3 Prob1
@@ -83,4 +62,4 @@ initialize:
 
 # Make clean
 clean :
-	rm -rf *.o $(OBJ)/* $(EXE)/*
+	rm -rf $(OBJ)/* $(EXE)/*

@@ -48,13 +48,12 @@ class max_stack {
 				data = assign.data;
 				max_data = assign.max_data;
 				min_data = assign.min_data;
-				
 			}
 			return *this;
 		}
  
-    	bool empty() const { 
-    	    return data->empty(); 
+    	bool is_empty() const { 
+    	    return data->is_empty(); 
     	}
   	
         const T top() const { 

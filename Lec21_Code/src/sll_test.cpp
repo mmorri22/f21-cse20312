@@ -15,7 +15,7 @@ int main( const int argc, const char* argv[] ){
 		the_list->insert(temp);
 	}
 	
-	COUT << the_list << ENDL;
+	COUT << "Print the List: " << the_list << ENDL;
 	
 	// Must delete if new is called 
 	delete the_list;

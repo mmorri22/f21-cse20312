@@ -37,30 +37,30 @@ int main()
 	// Seed srand - Remember the Year 2038 Problem?
 	srand( (unsigned int)time(NULL) );
 	
-	max_stack<int>* the_stack = new max_stack<int>();
+	max_stack<int>* the_max_stack = new max_stack<int>();
 	
 	COUT << "Elements pushed on the stack: ";
 	for(unsigned int i = 0; i < stack_size; i++){
 		
-		the_stack->push(rand() % val_max);
+		the_max_stack->push(rand() % val_max);
 		
 	}
 	
 	COUT << ENDL;
 	
-	COUT << "size = " << the_stack->data_size 
-	     << ", max_size = " << the_stack->max_size
-	     << ", min_size = " << the_stack->min_size << ENDL;
+	COUT << "size = " << the_max_stack->data_size 
+	     << ", max_size = " << the_max_stack->max_size
+	     << ", min_size = " << the_max_stack->min_size << ENDL;
 	
 	COUT << ENDL << "Top\tMax\tMin\t" << ENDL;
 	for(unsigned int i = 0; i < stack_size; i++){
-		COUT << the_stack->top() << '\t';
-		COUT << the_stack->max() << '\t';
-		COUT << the_stack->min() << ENDL;
-		the_stack->pop();
+		COUT << the_max_stack->top() << '\t';
+		COUT << the_max_stack->max() << '\t';
+		COUT << the_max_stack->min() << ENDL;
+		the_max_stack->pop();
 	}
 	
-	delete the_stack;
+	delete the_max_stack;
 
     return 0;
 }

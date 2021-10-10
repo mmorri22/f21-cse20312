@@ -1,9 +1,10 @@
 #ifndef COMPLEX_H
 #define COMPLEX_H
 
-#include<iostream> 
+#include <iostream> 
   
 class Complex { 
+
 private: 
     int real, imag; 
 	
@@ -17,7 +18,8 @@ public:
 	int getReal() const;
 	
 	int getImag() const;
-      
+
+     
 	Complex operator+(const Complex &rhs) const;
 	
 	Complex operator-(const Complex &rhs) const;
@@ -31,7 +33,7 @@ public:
    friend std::ostream& operator<<( std::ostream& output, const Complex& C );
    
    friend std::istream& operator>>( std::istream& input, Complex& C );
-	
+
 }; 
 
 
