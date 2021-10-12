@@ -1,7 +1,7 @@
 #!/bin/sh
 # Author: Matthew Morrison
 # Email : matt.morrison@nd.edu
-# Fall 2021 - Data Structures - Programming Challenge - Grading Script
+# Fall 2021 - Data Structures - Programming Challenge 06 - Grading Script
 #
 # This script will help TAs evaluate the course PQC programming standards
 
@@ -11,31 +11,24 @@ REDIRECT="redirect.out"
 
 # Point Breakdown Variables
 STUDENT_GRADE=0
-TOTAL=400
-INIT=10
-CHECK_O_PTS=50
-CHECK_EXE_PTS=50
-CHECK_CLEAN=50
-PC_06_PQC_TEST=100
-COMPILATION_TEST=150
-VALGRIND_MSG="ERROR SUMMARY: 0 errors"
-VALGRIND_PTS=10
-CLEAN=23
-INIT=23
-JK_TEST=25
+TOTAL=700
+CHECK_O_PTS=15
+CHECK_EXE_PTS=15
+CHECK_CLEAN=15
+JK_TEST_PQC_TEST=50
+BDC_TEST_PQC_TEST=50
 JK_TEST_1=20
 JK_TEST_2=20
-JK_TEST_3=38
-JK_TEST_4=38
-JK_TEST_5=38
-JK_TEST_6=38
-BDC_TEST=25
+JK_TEST_3=46
+JK_TEST_4=47
+JK_TEST_5=47
+JK_TEST_6=47
 BDC_TEST_1=20
 BDC_TEST_2=20
-BDC_TEST_3=38
-BDC_TEST_4=38
-BDC_TEST_5=38
-BDC_TEST_6=38
+BDC_TEST_3=47
+BDC_TEST_4=47
+BDC_TEST_5=47
+BDC_TEST_6=47
 
 
 # Delete the script.out so student can test multiple times
@@ -52,7 +45,7 @@ if test -f $REDIRECT; then
 fi
 
 # Write initial messages to the output file
-INTRO_MESSAGE="Grading script for Programming Challenge 04"
+INTRO_MESSAGE="Grading script for Programming Challenge 06"
 NAME_MESSAGE="Type in the student's name (or just press Enter):"
 ID_MESSAGE="Type in the student's Notre Dame netID name (or just press Enter):"
 
@@ -90,10 +83,10 @@ LIST_OUTPUTS="ls *"
 CHECK_O_TEST="test -f objects/*.o"
 
 # Test for the executable 
-CHECK_EXE="test -f exe/PC06"    
+CHECK_EXE="test -f exe/JK_TEST"    
 
 # Next, we check for the object files  
-if test -f "objects/PC06.o" || test -f "objects/bst.o"; then
+if test -f "objects/JKFF.o" || test -f "objects/BDC.o"; then
     echo "One or more object file exist." >> $SCRIPT_OUT
 	echo "Executables must be cleaned prior to GitHub push." >> $SCRIPT_OUT
 	echo "Automatic 50 point deduction, per project description" >> $SCRIPT_OUT
@@ -110,8 +103,8 @@ fi
 
 
 # Next, we check for the executable 
-if test -f "exe/PC06"; then
-    echo "PC06 Executable Exists." >> $SCRIPT_OUT
+if test -f "exe/JK_TEST.o" || test -f "exe/BDC_Test"; then
+    echo "Executable Exists." >> $SCRIPT_OUT
 	echo "Executables must be cleaned prior to GitHub push." >> $SCRIPT_OUT
 	echo "Automatic 50 point deduction, per project description" >> $SCRIPT_OUT
 	echo "0 / $CHECK_EXE_PTS" >> $SCRIPT_OUT
@@ -160,96 +153,8 @@ else
 fi
 
 
-
 #######################
-# Test the make PC06 command 
-#######################
-
-echo "" >> $SCRIPT_OUT
-echo "-----------------------------" >> $SCRIPT_OUT
-echo "Testing make PC06" >> $SCRIPT_OUT
-
-make clean >> $SCRIPT_OUT
-
-# make decode comparison variables
-MAKE_CLEAN_FORCE="rm -rf *.o PC06"
-MAKE_PC06_TEST="make PC06"
-MAKE_GCC="gcc"
-MAKE_WALL="-Wall"
-MAKE_WEXTRA="-Wextra"
-MAKE_WCONVERSION="-Wconversion"
-MAKE_WERROR="-Werror"
-MAKE_STD_C11="-std=c11"
-MAKE_PC06_CLEAN_FORCE=$( $MAKE_CLEAN_FORCE )
-MAKE_PC06_TEST_RESULT=$( $MAKE_PC06_TEST )
-
-# Delete redirect and send make result to redirect 
-echo $MAKE_PC06_CLEAN_FORCE >> $REDIRECT
-echo $MAKE_PC06_TEST_RESULT >> $REDIRECT
-
-# Send results to the script
-echo "$MAKE_PC06_TEST output  : " >> $SCRIPT_OUT
-echo $MAKE_PC06_TEST_RESULT >> $SCRIPT_OUT
-echo "" >> $SCRIPT_OUT
-# Add points to overall score or mark as 0 if not for make lucky
-
-# Will pass if their compilation output contains gcc -Wall -Wextra -Wconversion -Werror and -std=c11
-if grep -e "$MAKE_GCC" $REDIRECT && grep -e "$MAKE_WEXTRA" $REDIRECT && grep -e "$MAKE_WCONVERSION" $REDIRECT && grep -e "$MAKE_WERROR" $REDIRECT && grep -e "$MAKE_STD_C11" $REDIRECT
-
-then 
-	echo "$MAKE_PC06_TEST test passed" >> $SCRIPT_OUT
-	echo "Student made a good faith attempt to compile with these flags:" >> $SCRIPT_OUT
-	echo "$MAKE_GCC $MAKE_WEXTRA $MAKE_WCONVERSION $MAKE_WERROR $MAKE_STD_C11" >> $SCRIPT_OUT
-	echo "Successful compilation is not required to earn these points" >> $SCRIPT_OUT
-	echo "$PC_06_PQC_TEST / $PC_06_PQC_TEST" >> $SCRIPT_OUT
-	echo "" >> $SCRIPT_OUT
-	((STUDENT_GRADE += $PC_06_PQC_TEST))
-	
-else
-	echo "$MAKE_PC06_TEST test failed" >> $SCRIPT_OUT
-	echo "0 / $PC_06_PQC_TEST" >> $SCRIPT_OUT
-	echo "To the grading TA - Manually check if the make PC06 does not contain these flags." >> $SCRIPT_OUT
-	echo "If it actually works, reward them back the 100 points and delete theese comment." >> $SCRIPT_OUT
-	echo "If not, then they violated the PQC rules, and deduct another 300 points." >> $SCRIPT_OUT
-	
-fi
-
-
-
-#######################
-# Check if the code successfull compiled 
-#######################
-
-# Now the executable SHOULD exist! 
-echo "-----------------------------" >> $SCRIPT_OUT
-if grep -e "all warnings being treated as errors" $REDIRECT; then
-
-    echo "PC06 did not successfully compile." >> $SCRIPT_OUT
-	echo "Executables must be cleaned prior to GitHub push." >> $SCRIPT_OUT
-	echo "Automatic 50 point deduction, per project description" >> $SCRIPT_OUT
-	echo "0 / $COMPILATION_TEST" >> $SCRIPT_OUT
-	echo "Here are the files currently in the project folder." >> $SCRIPT_OUT
-	CHECK_O_TEST_RESULT=$( $LIST_OUTPUTS )
-
-else
-
-	echo "PC06 Successfully Compiled!" >> $SCRIPT_OUT
-	((STUDENT_GRADE += $COMPILATION_TEST))
-	echo "$COMPILATION_TEST / $COMPILATION_TEST" >> $SCRIPT_OUT
-	
-fi
-
-echo "" >> $SCRIPT_OUT
-
-# Delete temporary compilation results
-if test -f $REDIRECT; then
-    rm $REDIRECT
-fi
-
-
-
-#######################
-# Test the make JK_Test command 
+# Test the make JK_TEST command 
 #######################
 
 echo "" >> $SCRIPT_OUT
@@ -259,24 +164,24 @@ echo "Testing make JK_Test" >> $SCRIPT_OUT
 make clean >> $SCRIPT_OUT
 
 # make decode comparison variables
-MAKE_CLEAN_FORCE="rm -rf *.o exe/JK_Test"
-MAKE_JK_Test_TEST="make JK_Test"
-MAKE_GCC="gcc"
+MAKE_CLEAN_FORCE="rm -rf objects/* exe/*"
+MAKE_JK_TEST_TEST="make JK_Test"
+MAKE_GCC="g++"
 MAKE_WALL="-Wall"
 MAKE_WEXTRA="-Wextra"
 MAKE_WCONVERSION="-Wconversion"
 MAKE_WERROR="-Werror"
-MAKE_STD_C11="-std=c11"
-MAKE_JK_Test_CLEAN_FORCE=$( $MAKE_CLEAN_FORCE )
-MAKE_JK_Test_TEST_RESULT=$( $MAKE_JK_Test_TEST )
+MAKE_STD_C11="-std=c++11"
+MAKE_JK_TEST_CLEAN_FORCE=$( $MAKE_CLEAN_FORCE )
+MAKE_JK_TEST_TEST_RESULT=$( $MAKE_JK_TEST_TEST )
 
 # Delete redirect and send make result to redirect 
-echo $MAKE_JK_Test_CLEAN_FORCE >> $REDIRECT
-echo $MAKE_JK_Test_TEST_RESULT >> $REDIRECT
+echo $MAKE_JK_TEST_CLEAN_FORCE >> $REDIRECT
+echo $MAKE_JK_TEST_TEST_RESULT >> $REDIRECT
 
 # Send results to the script
-echo "$MAKE_JK_Test_TEST output  : " >> $SCRIPT_OUT
-echo $MAKE_JK_Test_TEST_RESULT >> $SCRIPT_OUT
+echo "$MAKE_JK_TEST_TEST output  : " >> $SCRIPT_OUT
+echo $MAKE_JK_TEST_TEST_RESULT >> $SCRIPT_OUT
 echo "" >> $SCRIPT_OUT
 # Add points to overall score or mark as 0 if not for make lucky
 
@@ -284,18 +189,18 @@ echo "" >> $SCRIPT_OUT
 if grep -e "$MAKE_GCC" $REDIRECT && grep -e "$MAKE_WEXTRA" $REDIRECT && grep -e "$MAKE_WCONVERSION" $REDIRECT && grep -e "$MAKE_WERROR" $REDIRECT && grep -e "$MAKE_STD_C11" $REDIRECT
 
 then 
-	echo "$MAKE_JK_Test_TEST test passed" >> $SCRIPT_OUT
+	echo "$MAKE_JK_TEST_TEST test passed" >> $SCRIPT_OUT
 	echo "Student made a good faith attempt to compile with these flags:" >> $SCRIPT_OUT
 	echo "$MAKE_GCC $MAKE_WEXTRA $MAKE_WCONVERSION $MAKE_WERROR $MAKE_STD_C11" >> $SCRIPT_OUT
 	echo "Successful compilation is not required to earn these points" >> $SCRIPT_OUT
-	echo "$JK_Test_PQC_TEST / $JK_Test_PQC_TEST" >> $SCRIPT_OUT
+	echo "$JK_TEST_PQC_TEST / $JK_TEST_PQC_TEST" >> $SCRIPT_OUT
 	echo "" >> $SCRIPT_OUT
-	((STUDENT_GRADE += $JK_Test_PQC_TEST))
+	((STUDENT_GRADE += $JK_TEST_PQC_TEST))
 	
 else
-	echo "$MAKE_JK_Test_TEST test failed" >> $SCRIPT_OUT
-	echo "0 / $JK_Test_PQC_TEST" >> $SCRIPT_OUT
-	echo "To the grading TA - Manually check if the make JK_Test does not contain these flags." >> $SCRIPT_OUT
+	echo "$MAKE_JK_TEST_TEST test failed" >> $SCRIPT_OUT
+	echo "0 / $JK_TEST_PQC_TEST" >> $SCRIPT_OUT
+	echo "To the grading TA - Manually check if the make JK_TEST does not contain these flags." >> $SCRIPT_OUT
 	echo "If it actually works, reward them back the 100 points and delete theese comment." >> $SCRIPT_OUT
 	echo "If not, then they violated the PQC rules, and deduct another 300 points." >> $SCRIPT_OUT
 	
@@ -311,18 +216,18 @@ fi
 echo "-----------------------------" >> $SCRIPT_OUT
 if grep -e "all warnings being treated as errors" $REDIRECT; then
 
-    echo "JK_Test did not successfully compile." >> $SCRIPT_OUT
+    echo "JK_TEST did not successfully compile." >> $SCRIPT_OUT
 	echo "Executables must be cleaned prior to GitHub push." >> $SCRIPT_OUT
 	echo "Automatic 50 point deduction, per project description" >> $SCRIPT_OUT
-	echo "0 / $COMPILATION_TEST" >> $SCRIPT_OUT
+	echo "0 / $JK_TEST_PQC_TEST" >> $SCRIPT_OUT
 	echo "Here are the files currently in the project folder." >> $SCRIPT_OUT
 	CHECK_O_TEST_RESULT=$( $LIST_OUTPUTS )
 
 else
 
-	echo "JK_Test Successfully Compiled!" >> $SCRIPT_OUT
-	((STUDENT_GRADE += $COMPILATION_TEST))
-	echo "$COMPILATION_TEST / $COMPILATION_TEST" >> $SCRIPT_OUT
+	echo "JK_TEST Successfully Compiled!" >> $SCRIPT_OUT
+	((STUDENT_GRADE += $JK_TEST_PQC_TEST))
+	echo "$JK_TEST_PQC_TEST / $JK_TEST_PQC_TEST" >> $SCRIPT_OUT
 	
 fi
 
@@ -335,7 +240,7 @@ fi
 
 
 ############################################################
-# Running ./lucky tests
+# Running ./exe/JK_Test tests
 ############################################################
 
 # lucky tests 
@@ -568,57 +473,11 @@ else
 fi
 
 
-#########################
-# JK_TEST_VALGRIND Test
-#########################
-
-echo "" >> $SCRIPT_OUT
-echo "-----------------------------" >> $SCRIPT_OUT
-
-# Test re-direct file
-JK_TEST_VALGRIND_REDIRECT="JK_Test_valgrind.out"
-
-# valgrind command 
-JK_TEST_VALGRIND_TEST="valgrind --tool=memcheck --leak-check=yes $JK_TEST_5_TEST > $JK_TEST_VALGRIND_REDIRECT 2>&1"
-
-# Print tests to student 
-echo "JK_Test valgrind test" >> $SCRIPT_OUT
-echo $JK_TEST_VALGRIND_TEST >> $SCRIPT_OUT
-make JK_Test > $REDIRECT
-
-# Run the valgrind test
-JK_TEST_VALGRIND_RESULT=$(valgrind --tool=memcheck --leak-check=yes ./exe/JK_Test $JK_TEST_4 > $JK_TEST_VALGRIND_REDIRECT 2>&1)
-$JK_TEST_VALGRIND_RESULT
-
-#Check to determine if the valgrind passed:
-if grep -q "$VALGRIND_MSG" $JK_TEST_VALGRIND_REDIRECT
-
-then
-	echo "$JK_TEST_VALGRIND_TEST passed" >> $SCRIPT_OUT
-	echo "$VALGRIND_PTS / $VALGRIND_PTS" >> $SCRIPT_OUT
-	((STUDENT_GRADE += $VALGRIND_PTS))
-	
-else
-	echo "$JK_TEST_VALGRIND_TEST failed" >> $SCRIPT_OUT
-	echo "0 / $VALGRIND_PTS" >> $SCRIPT_OUT
-	echo "" >> $SCRIPT_OUT
-	echo "Contents of the valgrind test:" >> $SCRIPT_OUT
-	cat $JK_TEST_VALGRIND_REDIRECT >> $SCRIPT_OUT
-	
-fi
-
-# Remove the valgrind re-direct file 
-rm $JK_TEST_VALGRIND_REDIRECT
-
-echo "" >> $SCRIPT_OUT
-echo "-----------------------------" >> $SCRIPT_OUT
-
-
 ############################################################
-# Running ./streams tests
+# Running ./BDC_Test tests
 ############################################################
 
-# streams tests 
+# BDC_Test tests 
 BDC_TEST_1_TEST="./exe/BDC_Test"
 BDC_TEST_1_EXPECTED="Incorrect number of inputs"
 
@@ -758,50 +617,84 @@ Final value in main: 1 1 1 0 14"
 
 
 #######################
-# Test the make streams command 
+# Test the make BDC_Test command 
 #######################
 
-MAKE_BDC_TEST="make BDC_Test"
+echo "" >> $SCRIPT_OUT
+echo "-----------------------------" >> $SCRIPT_OUT
+echo "Testing make BDC_Test" >> $SCRIPT_OUT
 
-MAKE_BDC_TEST_EXPECTED_FIRST="g++ -m64 -std=c++11 -Weffc++ -O2 -g -Wall -Wextra -Wconversion -Wshadow -pedantic -Werror -lm -c src/JKFF.cpp -o obj/JKFF.o"
-MAKE_BDC_TEST_EXPECTED_SECOND="g++ -m64 -std=c++11 -Weffc++ -O2 -g -Wall -Wextra -Wconversion -Wshadow -pedantic -Werror -lm -c src/BDC.cpp -o obj/BDC.o"
-MAKE_BDC_TEST_EXPECTED_THIRD="g++ -m64 -std=c++11 -Weffc++ -O2 -g -Wall -Wextra -Wconversion -Wshadow -pedantic -Werror -lm -c src/BDC_Test.cpp -o obj/BDC_Test.o"
-MAKE_BDC_TEST_EXPECTED_FOURTH="g++ -m64 -std=c++11 -Weffc++ -O2 -g -Wall -Wextra -Wconversion -Wshadow -pedantic -Werror -lm -o exe/BDC_Test obj/JKFF.o obj/BDC.o obj/BDC_Test.o"
+make clean >> $SCRIPT_OUT
 
-# Clean the object files and then run the test 
-make clean >> $REDIRECT
 
-# Run the make command and get the result 
-MAKE_BDC_TEST_RESULT=$( $MAKE_BDC_TEST )
+# make decode comparison variables
+MAKE_BDC_Test_TEST="make BDC_Test"
+MAKE_BDC_Test_CLEAN_FORCE=$( $MAKE_CLEAN_FORCE )
+MAKE_BDC_Test_TEST_RESULT=$( $MAKE_BDC_Test_TEST )
+
+# Delete redirect and send make result to redirect 
+echo $MAKE_BDC_Test_CLEAN_FORCE >> $REDIRECT
+echo $MAKE_BDC_Test_TEST_RESULT >> $REDIRECT
 
 # Send results to the script
-echo "Expected $MAKE_BDC_TEST output: " >> $SCRIPT_OUT 
-echo $MAKE_BDC_TEST_EXPECTED_FIRST >> $SCRIPT_OUT 
-echo $MAKE_BDC_TEST_EXPECTED_SECOND >> $SCRIPT_OUT 
-echo $MAKE_BDC_TEST_EXPECTED_THIRD >> $SCRIPT_OUT 
-echo $MAKE_BDC_TEST_EXPECTED_FOURTH >> $SCRIPT_OUT 
-echo "Actual $MAKE_BDC_TEST output  : " >> $SCRIPT_OUT 
-echo $MAKE_BDC_TEST_RESULT >> $SCRIPT_OUT
+echo "$MAKE_BDC_Test_TEST output  : " >> $SCRIPT_OUT
+echo $MAKE_BDC_Test_TEST_RESULT >> $SCRIPT_OUT
 echo "" >> $SCRIPT_OUT
-
-echo $MAKE_BDC_TEST_RESULT >> $REDIRECT
-
 # Add points to overall score or mark as 0 if not for make lucky
-if grep -q "$MAKE_BDC_TEST_EXPECTED_FIRST" $REDIRECT && grep -q "$MAKE_BDC_TEST_EXPECTED_SECOND" $REDIRECT && grep -q "$MAKE_BDC_TEST_EXPECTED_THIRD" $REDIRECT && grep -q "$MAKE_BDC_TEST_EXPECTED_FOURTH" $REDIRECT
+
+# Will pass if their compilation output contains gcc -Wall -Wextra -Wconversion -Werror and -std=c11
+if grep -e "$MAKE_GCC" $REDIRECT && grep -e "$MAKE_WEXTRA" $REDIRECT && grep -e "$MAKE_WCONVERSION" $REDIRECT && grep -e "$MAKE_WERROR" $REDIRECT && grep -e "$MAKE_STD_C11" $REDIRECT
 
 then 
-	echo "$MAKE_BDC_TEST test passed" >> $SCRIPT_OUT
-	echo "$BDC_TEST / $BDC_TEST" >> $SCRIPT_OUT
-	((STUDENT_GRADE += $BDC_TEST))
+	echo "$MAKE_BDC_Test_TEST test passed" >> $SCRIPT_OUT
+	echo "Student made a good faith attempt to compile with these flags:" >> $SCRIPT_OUT
+	echo "$MAKE_GCC $MAKE_WEXTRA $MAKE_WCONVERSION $MAKE_WERROR $MAKE_STD_C11" >> $SCRIPT_OUT
+	echo "Successful compilation is not required to earn these points" >> $SCRIPT_OUT
+	echo "$BDC_TEST_PQC_TEST / $BDC_TEST_PQC_TEST" >> $SCRIPT_OUT
+	echo "" >> $SCRIPT_OUT
+	((STUDENT_GRADE += $BDC_TEST_PQC_TEST))
 	
 else
-	echo "$MAKE_BDC_TEST test failed" >> $SCRIPT_OUT
-	echo "0 / $BDC_TEST" >> $SCRIPT_OUT
+	echo "$MAKE_BDC_Test_TEST test failed" >> $SCRIPT_OUT
+	echo "0 / $BDC_TEST_PQC_TEST" >> $SCRIPT_OUT
+	echo "To the grading TA - Manually check if the make BDC_Test does not contain these flags." >> $SCRIPT_OUT
+	echo "If it actually works, reward them back the 100 points and delete theese comment." >> $SCRIPT_OUT
+	echo "If not, then they violated the PQC rules, and deduct another 300 points." >> $SCRIPT_OUT
+	
+fi
+
+
+
+#######################
+# Check if the code successfull compiled 
+#######################
+
+# Now the executable SHOULD exist! 
+echo "-----------------------------" >> $SCRIPT_OUT
+if grep -e "all warnings being treated as errors" $REDIRECT; then
+
+    echo "BDC_Test did not successfully compile." >> $SCRIPT_OUT
+	echo "Executables must be cleaned prior to GitHub push." >> $SCRIPT_OUT
+	echo "Automatic 50 point deduction, per project description" >> $SCRIPT_OUT
+	echo "0 / $BDC_TEST_PQC_TEST" >> $SCRIPT_OUT
+	echo "Here are the files currently in the project folder." >> $SCRIPT_OUT
+	CHECK_O_TEST_RESULT=$( $LIST_OUTPUTS )
+
+else
+
+	echo "BDC_Test Successfully Compiled!" >> $SCRIPT_OUT
+	((STUDENT_GRADE += $BDC_TEST_PQC_TEST))
+	echo "$BDC_TEST_PQC_TEST / $BDC_TEST_PQC_TEST" >> $SCRIPT_OUT
 	
 fi
 
 echo "" >> $SCRIPT_OUT
-echo "-----------------------------" >> $SCRIPT_OUT
+
+# Delete temporary compilation results
+if test -f $REDIRECT; then
+    rm $REDIRECT
+fi
+
 
 
 #######################
@@ -980,56 +873,14 @@ fi
 echo "" >> $SCRIPT_OUT
 echo "-----------------------------" >> $SCRIPT_OUT
 
-#########################
-# BDC_TEST_VALGRIND Test
-#########################
-
-# Test re-direct file
-BDC_TEST_VALGRIND_REDIRECT="BDC_valgrind.out"
-
-# valgrind command 
-BDC_TEST_VALGRIND_TEST="valgrind --tool=memcheck --leak-check=yes $BDC_TEST_4_TEST > $BDC_TEST_VALGRIND_REDIRECT 2>&1"
-
-# Print tests to student 
-echo "streams valgrind test" >> $SCRIPT_OUT
-echo $BDC_TEST_VALGRIND_TEST >> $SCRIPT_OUT
-echo "" >> $SCRIPT_OUT
-
-# Run the valgrind test
-BDC_TEST_VALGRIND_RESULT=$( valgrind --tool=memcheck --leak-check=yes $BDC_TEST_4_TEST > $BDC_TEST_VALGRIND_REDIRECT 2>&1 )
-$BDC_TEST_VALGRIND_RESULT
-
-
-#Check to determine if the valgrind passed:
-if grep -q "$VALGRIND_MSG" $BDC_TEST_VALGRIND_REDIRECT
-
-then
-	echo "$BDC_TEST_VALGRIND_TEST passed" >> $SCRIPT_OUT
-	echo "$VALGRIND_PTS / $VALGRIND_PTS" >> $SCRIPT_OUT
-	((STUDENT_GRADE += $VALGRIND_PTS))
-	
-else
-	echo "$BDC_TEST_VALGRIND_TEST failed" >> $SCRIPT_OUT
-	echo "0 / $VALGRIND_PTS" >> $SCRIPT_OUT
-	echo "" >> $SCRIPT_OUT
-	echo "Contents of the valgrind test:" >> $SCRIPT_OUT
-	cat $BDC_TEST_VALGRIND_REDIRECT >> $SCRIPT_OUT
-fi
-
-
-# Remove the valgrind re-direct file 
-rm $BDC_TEST_VALGRIND_REDIRECT
-
-echo "" >> $SCRIPT_OUT
-echo "-----------------------------" >> $SCRIPT_OUT
 
 
 
 # Final Grade to both the screen and the script file.
 echo "-----------------------------" >> $SCRIPT_OUT
 echo "" >> $SCRIPT_OUT
-echo "PC06 Coding Portion Grade for $STUDENT_NAME ($STUDENT_ID): $STUDENT_GRADE / $TOTAL " >> $SCRIPT_OUT
-echo "PC06 Coding Portion Grade for $STUDENT_NAME ($STUDENT_ID): $STUDENT_GRADE / $TOTAL "
+echo "PC06 Testing Portion Grade for $STUDENT_NAME ($STUDENT_ID): $STUDENT_GRADE / $TOTAL " >> $SCRIPT_OUT
+echo "PC06 Testing Portion Grade for $STUDENT_NAME ($STUDENT_ID): $STUDENT_GRADE / $TOTAL "
 echo "Run 'vim $SCRIPT_OUT' to see the result of the test script"
 
 
