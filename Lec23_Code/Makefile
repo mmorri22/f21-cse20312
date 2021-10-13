@@ -17,15 +17,108 @@ OBJ := obj
 EXE := exe
 
 
-# Command: make switch
-switchObjs := $(OBJ)/switch.o
+# Command: make HashTest1
+HashTest1Objs := $(OBJ)/HashTest1.o
 
-switch: $(switchObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/switch $(switchObjs)
-	$(EXE)/./switch
+HashTest1: $(HashTest1Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/HashTest1 $(HashTest1Objs)
+	$(EXE)/./HashTest1
 
-$(OBJ)/switch.o: $(SRC)/switch.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/switch.cpp -o $@
+$(OBJ)/HashTest1.o: $(SRC)/HashTest1.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/HashTest1.cpp -o $@
+
+
+
+# Command: make HashTest2
+HashTest2Objs := $(OBJ)/HashTest2.o
+
+HashTest2: $(HashTest2Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/HashTest2 $(HashTest2Objs)
+	$(EXE)/./HashTest2
+
+$(OBJ)/HashTest2.o: $(SRC)/HashTest2.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/HashTest2.cpp -o $@
+
+
+
+# Command: make HashTest3
+HashTest3Objs := $(OBJ)/HashTest3.o
+
+HashTest3: $(HashTest3Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/HashTest3 $(HashTest3Objs)
+	$(EXE)/./HashTest3
+
+$(OBJ)/HashTest3.o: $(SRC)/HashTest3.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/HashTest3.cpp -o $@
+
+
+
+# Command: make HashTest4
+HashTest4Objs := $(OBJ)/HashTest4.o
+
+HashTest4: $(HashTest4Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/HashTest4 $(HashTest4Objs)
+	$(EXE)/./HashTest4
+
+$(OBJ)/HashTest4.o: $(SRC)/HashTest4.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/HashTest4.cpp -o $@
+
+
+# Command: make HashTest5
+HashTest5Objs := $(OBJ)/HashTest5.o
+
+HashTest5: $(HashTest5Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/HashTest5 $(HashTest5Objs)
+	$(EXE)/./HashTest5
+
+$(OBJ)/HashTest5.o: $(SRC)/HashTest5.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/HashTest5.cpp -o $@
+
+
+# Command: make HashTest6
+HashTest6Objs := $(OBJ)/HashTest6.o
+
+HashTest6: $(HashTest6Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/HashTest6 $(HashTest6Objs)
+	$(EXE)/./HashTest6
+
+$(OBJ)/HashTest6.o: $(SRC)/HashTest6.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/HashTest6.cpp -o $@
+
+
+# Command: make HashTest7
+HashTest7Objs := $(OBJ)/HashTest7.o
+
+HashTest7: $(HashTest7Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/HashTest7 $(HashTest7Objs)
+	$(EXE)/./HashTest7
+
+$(OBJ)/HashTest7.o: $(SRC)/HashTest7.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/HashTest7.cpp -o $@
+
+
+# Command: make HashTest8
+HashTest8Objs := $(OBJ)/HashTest8.o
+
+HashTest8: $(HashTest8Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/HashTest8 $(HashTest8Objs)
+	$(EXE)/./HashTest8
+
+$(OBJ)/HashTest8.o: $(SRC)/HashTest8.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/HashTest8.cpp -o $@
+	
+
+
+# Command: make HashTest
+HashTestObjs := $(OBJ)/HashTest.o
+
+HashTest: $(HashTestObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/HashTest $(HashTestObjs)
+	$(EXE)/./HashTest
+
+$(OBJ)/HashTest.o: $(SRC)/HashTest.cpp 
+	$(PP) $(CXXFLAGS) -c $(SRC)/HashTest.cpp -o $@
+
 
 
 
@@ -132,33 +225,6 @@ $(OBJ)/LPTest.o: $(SRC)/LPTest.cpp $(INC)/LinearProbe.h
 	$(PP) $(CXXFLAGS) -c $(SRC)/LPTest.cpp -o $@
 
 
-#####################################################
-# Problem 4
-#####################################################
-# Command: make Prob4
-Prob4Objs :=  $(OBJ)/Prob4.o
-
-Prob4: $(Prob4Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/Prob4 $(Prob4Objs)
-	$(EXE)/./Prob4
-
-$(OBJ)/Prob4.o: $(SRC)/Prob4.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/Prob4.cpp -o $@
-	
-	
-#####################################################
-# Problem 5
-#####################################################
-# Command: make Prob5
-Prob5Objs :=  $(OBJ)/Prob5.o
-
-Prob5: $(Prob5Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/Prob5 $(Prob5Objs)
-	$(EXE)/./Prob5
-
-$(OBJ)/Prob5.o: $(SRC)/Prob5.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/Prob5.cpp -o $@
-	
 
 # make initialize
 # Will be called by grader to initialize your objects and executables folders
