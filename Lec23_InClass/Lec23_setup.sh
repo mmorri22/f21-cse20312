@@ -1,5 +1,6 @@
 wget https://raw.githubusercontent.com/mmorri22/f21-cse20312/main/Lec23_InClass/Makefile
 make initialize
+mkdir include src
 cd src
 wget https://raw.githubusercontent.com/mmorri22/f21-cse20312/main/Lec23_InClass/src/HashTest1.cpp
 wget https://raw.githubusercontent.com/mmorri22/f21-cse20312/main/Lec23_InClass/src/HashTest2.cpp
