@@ -144,8 +144,7 @@ int main(const int argc, const char* argv[] ){
 	// Close the ifstream
 	dictionaryFile.close();
 	
-	// In C++11, conversion from char* to string is depricated. Must do it here
-	// Without (char*), it will compile and run. -Wpedantic will throw a warning
+	// Running several tests
 	checkPlate(dictionaryVec, "RCT100SA");
 	checkPlate(dictionaryVec, "RT123SO");
 	checkPlate(dictionaryVec, "AQ10S0K");
