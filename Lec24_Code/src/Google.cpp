@@ -12,7 +12,6 @@
 #include <unordered_map>
 #include <vector>
 #include <string>
-#include <iterator>
 
 void getAndCheckFile(std::ifstream& fileStream, std::string fileName){
 	

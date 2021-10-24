@@ -86,12 +86,6 @@ class HashTable{
 			
 		}
 
-		// Return Hash Location
-		long unsigned int findPos(const Key& theKey) const{
-			
-			return HashFunc(theKey) % array->size();
-			
-		}
 		
 		// Return Hash Location
 		long unsigned int findPos( const std::pair<const Key, Value>& insertPair ) const{
@@ -99,11 +93,12 @@ class HashTable{
 			// Initialize the Values
 			long unsigned int currentPos;
 			long unsigned int iter = 0;
-			const unsigned int STEPSIZE = 1;
+			const unsigned int STEPSIZE = 2;
 			
 			do{
 				// Hash Function determines current position
-				currentPos = (HashFunc( insertPair.first ) + iter*STEPSIZE) % array->capacity();
+				currentPos = (HashFunc( insertPair.first ) + iter*STEPSIZE) 
+					% array->capacity();
 				++iter;
 			}
 			while(

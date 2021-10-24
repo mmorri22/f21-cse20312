@@ -21,6 +21,7 @@ int main(){
 	
 	// Insert into the int, double hash 
 	int_dbl_hash->insert( { 5, 3.14 } );
+	int_dbl_hash->insert( { 0, 6.28 } );
 	
 	COUT << int_dbl_hash << ENDL;
 	

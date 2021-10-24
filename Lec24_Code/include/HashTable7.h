@@ -86,13 +86,6 @@ class HashTable{
 			return keyToTranslate.size();
 			
 		}
-
-		// Return Hash Location
-		long unsigned int findPos(const Key& theKey) const{
-			
-			return HashFunc(theKey) % array->size();
-			
-		}
 		
 		// Return Hash Location
 		long unsigned int findPos( const std::pair<const Key, Value>& insertPair ) const{
@@ -100,12 +93,14 @@ class HashTable{
 			// Initialize the Values
 			long unsigned int currentPos;
 			long unsigned int iter = 0;
-			const long unsigned int STEPSIZE = 1;
-			
+			const long unsigned int STEPSIZE = 2;
+						
 			do{
 				// Hash Function determines current position
+
 				currentPos = (HashFunc( insertPair.first ) + iter*STEPSIZE) % array->capacity();
 				++iter;
+				
 			}
 			while(
 				array->at( currentPos ).state != EMPTY
@@ -192,10 +187,11 @@ class HashTable{
 			
 			// We will always increment the Hash if we get here
 			++numHash;
+
 			
 			// Get the location
-			long unsigned int location = findPos( insertPair.first );
-			
+			long unsigned int location = findPos( insertPair );
+		
 			// Insert the new entry at the current position
 			HashEntry theEntry(insertPair, ACTIVE);
 			array->at( location ) = theEntry;
@@ -236,7 +232,7 @@ class HashTable{
 					output << "ACTIVE, ";
 				
 				}
-				if( theTable->array->at(iter).state == DELETED ){
+				else if( theTable->array->at(iter).state == DELETED ){
 				
 					output << "DELETED, ";
 				

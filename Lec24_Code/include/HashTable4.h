@@ -19,7 +19,7 @@ class HashTable{
 			Key key;
 			Value value;
 			
-			HashEntry() : key(), value(), state( EMPTY ) {}
+			HashEntry() : key(), value() {}
 			
 			HashEntry( std::pair<const Key, Value> thePair ) 
 				: key(thePair.first), value(thePair.second) {}
