@@ -7,7 +7,7 @@ int main(){
 	Graph< int > theGraph;
 	
 	for(int iter = 1; iter <= 8; iter++){
-		theGraph.add_vertex( iter );
+		theGraph.add_vertex( iter*10 );
 	}
 	
 	// Nodes from 0
