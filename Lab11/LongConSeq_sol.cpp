@@ -6,7 +6,42 @@
 template<class T>
 int longest_consecutive(std::vector<T>& theArr){
 	
+    /* The Hash Table */
+    std::unordered_map<T, int> countSort;
+	
+	// Insert the elements into the Hash 
+    for(unsigned int iter = 0; iter < theArr.size(); iter++){
+        countSort.insert({theArr[iter], 1});
+    }
 
+    int result = 0;
+
+    for(unsigned int iter = 0; iter < theArr.size(); iter++){
+        int count = 1;
+        T num = theArr[iter];
+		
+		if( countSort.count( num ) > 0 ){
+			
+			T down = (T)(num - 1);
+			while (countSort.count(down) != 0){
+				//countSort.erase(down);
+				down--;
+				count++;
+			}
+			T up = (T)(num + 1);
+			while(countSort.count(up) != 0 ){
+				//countSort.erase(up);
+				up++;
+				count++;
+			}
+			
+			if (count > result){
+				result = count;
+			}
+			//countSort.erase(num);
+		}
+    }
+    return result;
 }
 
 
